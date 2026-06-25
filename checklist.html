@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orientation Checklist — Your College GPS</title>
+<meta name="description" content="School-specific, timeline-driven orientation checklist for Texas universities. Sourced from official sites.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#F7F4EF;--surface:#FFFFFF;--border:#E4DDD3;--border-lt:#EDE8E2;
+  --text:#1A1714;--text-2:#6B6560;--text-3:#9E9891;
+  --accent:#BF4C00;--accent-lt:#FAECE7;
+  --font-disp:'Syne',sans-serif;--font-body:'Inter',sans-serif;
+  --radius-sm:6px;--radius-md:10px;--radius-lg:14px;
+  --shadow:0 1px 3px rgba(0,0,0,.07),0 4px 16px rgba(0,0,0,.04);
+}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+
+/* NAV */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(247,244,239,.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:0 1.5rem;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--font-disp);font-size:15px;font-weight:700;color:var(--text);text-decoration:none}
+.nav-star{color:var(--accent);font-size:18px}
+.nav-back{font-size:13px;color:var(--text-2);text-decoration:none;display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:var(--radius-sm);transition:background .15s}
+.nav-back:hover{background:var(--border-lt);color:var(--text)}
+
+/* PAGE HEADER */
+.page-hdr{max-width:860px;margin:0 auto;padding:2rem 1.5rem 1rem}
+.page-hdr h1{font-family:var(--font-disp);font-size:clamp(20px,3.5vw,28px);font-weight:800;color:var(--text);margin-bottom:4px}
+.page-hdr p{font-size:13px;color:var(--text-2);line-height:1.55}
+
+/* DISCLAIMER BANNER */
+.disclaimer-banner{
+  max-width:860px;margin:0 auto;padding:0 1.5rem .75rem;
+}
+.disc-box{
+  background:#FFFBEB;border:1px solid #FDE68A;
+  border-radius:var(--radius-md);
+  padding:.75rem 1rem;
+  display:flex;align-items:flex-start;gap:9px;
+}
+.disc-icon{font-size:15px;color:#D97706;flex-shrink:0;margin-top:1px}
+.disc-text{font-size:12px;color:#92400E;line-height:1.6}
+.disc-text strong{font-weight:600}
+.disc-text a{color:#BF4C00;text-decoration:underline}
+
+/* MAIN CARD */
+.main-wrap{max-width:860px;margin:0 auto 3rem;padding:0 1.5rem}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden}
+
+/* CONTROLS */
+.controls-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:1rem 1.25rem;border-bottom:1px solid var(--border-lt);background:var(--bg)}
+.ctrl-label{font-size:12px;color:var(--text-3);white-space:nowrap}
+.school-select{
+  font-family:var(--font-body);font-size:13px;font-weight:500;
+  padding:6px 28px 6px 10px;color:var(--text);
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);
+  appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B6560' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 8px center;cursor:pointer;
+}
+.school-select:focus{outline:2px solid var(--accent);outline-offset:1px}
+.view-tabs{display:flex;gap:3px;margin-left:auto}
+.vtab{
+  font-family:var(--font-body);font-size:12px;font-weight:500;
+  padding:5px 12px;border-radius:var(--radius-sm);
+  border:1px solid var(--border);background:var(--surface);color:var(--text-2);
+  cursor:pointer;transition:all .15s;
+}
+.vtab:hover{border-color:var(--accent);color:var(--accent)}
+.vtab.active{background:var(--accent);color:white;border-color:var(--accent)}
+
+/* PROGRESS */
+.progress-row{display:flex;align-items:center;gap:12px;padding:.625rem 1.25rem;border-bottom:1px solid var(--border-lt)}
+.p-label{font-size:11px;color:var(--text-3);white-space:nowrap}
+.p-track{flex:1;height:4px;background:var(--border-lt);border-radius:999px;overflow:hidden}
+.p-fill{height:100%;background:var(--accent);border-radius:999px;transition:width .35s ease}
+.p-pct{font-size:12px;font-weight:600;color:var(--accent);min-width:30px;text-align:right}
+.p-count{font-size:11px;color:var(--text-3);white-space:nowrap}
+
+/* TIP */
+.tip-strip{display:flex;gap:10px;align-items:flex-start;padding:.875rem 1.25rem;border-bottom:1px solid var(--border-lt);background:var(--accent-lt)}
+.tip-icon{font-size:16px;color:var(--accent);flex-shrink:0;margin-top:1px}
+.tip-body{flex:1}
+.tip-school{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.tip-text{font-size:12.5px;color:var(--text);line-height:1.55}
+.tip-src{font-size:11px;color:var(--text-3);margin-top:4px}
+.tip-src a{color:var(--text-3);text-decoration:underline}
+
+/* DATES */
+.dates-strip{padding:.875rem 1.25rem;border-bottom:1px solid var(--border-lt)}
+.dates-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.5rem;gap:8px;flex-wrap:wrap}
+.dates-title{font-size:12px;font-weight:600;color:var(--text)}
+.dates-note{font-size:11px;color:var(--text-3);margin-top:2px}
+.dates-src{font-size:11px;color:var(--text-3);flex-shrink:0}
+.dates-src a{color:var(--text-3);text-decoration:underline}
+.dates-pills{display:flex;flex-wrap:wrap;gap:5px;margin-top:.5rem}
+.date-pill{
+  font-size:11px;font-weight:500;padding:4px 11px;border-radius:999px;
+  border:1px solid var(--border);background:var(--surface);color:var(--text-2);
+  cursor:pointer;transition:all .15s;white-space:nowrap;
+}
+.date-pill:hover{border-color:var(--accent);color:var(--accent)}
+.date-pill.sel{background:var(--accent);color:white;border-color:var(--accent)}
+
+/* CONTENT */
+.content{padding:1.25rem}
+.uk{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:1rem}
+.uk-i{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-3)}
+.uk-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.no-date-msg{font-size:12px;color:var(--text-2);font-style:italic;padding:.625rem .875rem;margin-bottom:1rem;background:var(--bg);border-radius:var(--radius-sm);border:1px dashed var(--border)}
+.phase{margin-bottom:1.5rem}
+.phase:last-child{margin-bottom:0}
+.ph-head{display:flex;align-items:center;gap:8px;margin-bottom:.75rem;flex-wrap:wrap}
+.ph-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.ph-title{font-size:13px;font-weight:600;color:var(--text)}
+.ph-win{font-size:11px;color:var(--text-3);background:var(--bg);border:1px solid var(--border);border-radius:999px;padding:2px 9px;white-space:nowrap;margin-left:auto}
+.ph-line{border-left:1.5px solid var(--border-lt);margin-left:3px;padding-left:1.25rem}
+.t-item{display:flex;align-items:flex-start;gap:10px;padding:9px 11px;background:var(--surface);border:1px solid var(--border-lt);border-radius:var(--radius-md);cursor:pointer;transition:background .12s,border-color .12s;margin-bottom:6px}
+.t-item:last-child{margin-bottom:0}
+.t-item:hover{background:var(--bg);border-color:var(--border)}
+.t-item.done{opacity:.5}
+.urg-bar{width:3px;border-radius:2px;align-self:stretch;flex-shrink:0}
+.chkbox{width:17px;height:17px;border-radius:5px;border:1.5px solid var(--border);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;background:var(--surface);transition:all .15s}
+.chkbox.on{background:var(--accent);border-color:var(--accent)}
+.chkbox.on::after{content:'';display:block;width:7px;height:4px;border-left:1.5px solid white;border-bottom:1.5px solid white;transform:rotate(-45deg) translateY(-1px)}
+.i-text{font-size:13px;color:var(--text);line-height:1.45;flex:1}
+.i-note{font-size:11px;color:var(--text-3);margin-top:3px;line-height:1.4}
+.t-item.done .i-text{text-decoration:line-through;color:var(--text-3)}
+.sec-card{background:var(--surface);border:1px solid var(--border-lt);border-radius:var(--radius-md);margin-bottom:8px;overflow:hidden}
+.sec-card:last-child{margin-bottom:0}
+.sec-head{display:flex;align-items:center;gap:10px;padding:.75rem 1rem;cursor:pointer;user-select:none;transition:background .12s}
+.sec-head:hover{background:var(--bg)}
+.sec-icon{font-size:16px;color:var(--accent)}
+.sec-title{font-size:13.5px;font-weight:600;flex:1;color:var(--text)}
+.sec-badge{font-size:11px;color:var(--text-3);background:var(--bg);border:1px solid var(--border);border-radius:999px;padding:2px 9px}
+.sec-badge.complete{background:#ECFDF5;color:#059669;border-color:#A7F3D0}
+.sec-chev{font-size:14px;color:var(--text-3);transition:transform .2s}
+.sec-chev.open{transform:rotate(180deg)}
+.sec-body{display:none;border-top:1px solid var(--border-lt)}
+.sec-body.open{display:block}
+.c-item{display:flex;align-items:flex-start;gap:10px;padding:9px 1rem;border-bottom:1px solid var(--border-lt);cursor:pointer;transition:background .12s}
+.c-item:last-of-type{border-bottom:none}
+.c-item:hover{background:var(--bg)}
+.c-item.done{opacity:.5}
+.c-item.done .i-text{text-decoration:line-through;color:var(--text-3)}
+
+/* FOOTER DISCLAIMER */
+.footer-disc{max-width:860px;margin:0 auto 1rem;padding:0 1.5rem}
+.footer-disc-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:.875rem 1.125rem;display:flex;align-items:flex-start;gap:9px}
+.fdisc-icon{font-size:15px;color:var(--text-3);flex-shrink:0;margin-top:1px}
+.fdisc-text{font-size:11.5px;color:var(--text-3);line-height:1.65}
+.fdisc-text strong{color:var(--text-2);font-weight:600}
+.fdisc-text a{color:var(--accent);text-decoration:none}
+.fdisc-text a:hover{text-decoration:underline}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--border);padding:1.5rem;text-align:center}
+.footer-inner{max-width:860px;margin:0 auto}
+.footer p{font-size:12px;color:var(--text-3);line-height:1.65}
+.footer a{color:var(--accent);text-decoration:none}
+.footer a:hover{text-decoration:underline}
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.phase{animation:fadeIn .2s ease both}
+.sec-card{animation:fadeIn .15s ease both}
+
+@media(max-width:600px){
+  .nav-back span{display:none}
+  .page-hdr{padding:1.5rem 1rem .75rem}
+  .main-wrap{padding:0 1rem}
+  .disclaimer-banner{padding:0 1rem .75rem}
+  .footer-disc{padding:0 1rem}
+  .view-tabs .vtab span{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-brand" href="index.html">
+    <i class="ti ti-star-filled nav-star" aria-hidden="true"></i>
+    Your College GPS
+  </a>
+  <a class="nav-back" href="index.html">
+    <i class="ti ti-arrow-left" aria-hidden="true"></i>
+    <span>Back to home</span>
+  </a>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-hdr">
+  <h1>Orientation Checklist</h1>
+  <p>Select your school, pick your orientation date, and work through tasks in priority order.</p>
+</div>
+
+<!-- DISCLAIMER BANNER -->
+<div class="disclaimer-banner">
+  <div class="disc-box">
+    <i class="ti ti-alert-triangle disc-icon" aria-hidden="true"></i>
+    <p class="disc-text">
+      <strong>Always verify dates and requirements directly with your school.</strong>
+      Information on this page is sourced from official university websites but can change at any time.
+      Before your orientation, confirm everything on your school's official site —
+      links are provided next to each section and in the source citations below each tip.
+    </p>
+  </div>
+</div>
+
+<!-- MAIN CARD -->
+<main class="main-wrap">
+  <div class="card">
+
+    <div class="controls-bar">
+      <span class="ctrl-label">Your school:</span>
+      <select class="school-select" id="sch" aria-label="Select your school">
+        <option value="utd">UT Dallas (UTD)</option>
+        <option value="ut">UT Austin</option>
+        <option value="tamu">Texas A&M</option>
+        <option value="tech">Texas Tech</option>
+        <option value="unt">UNT Denton</option>
+        <option value="tcu">TCU</option>
+        <option value="baylor">Baylor</option>
+        <option value="uh">U of Houston</option>
+      </select>
+      <div class="view-tabs" role="tablist">
+        <button class="vtab active" data-view="timeline" role="tab">📅 <span>Timeline</span></button>
+        <button class="vtab" data-view="checklist" role="tab">☑️ <span>Checklist</span></button>
+      </div>
+    </div>
+
+    <div class="progress-row">
+      <span class="p-label">Readiness</span>
+      <div class="p-track"><div class="p-fill" id="pfill" style="width:0%"></div></div>
+      <span class="p-pct" id="ppct">0%</span>
+      <span class="p-count" id="pcount">0 done</span>
+    </div>
+
+    <div class="tip-strip">
+      <i class="ti ti-bulb tip-icon" aria-hidden="true"></i>
+      <div class="tip-body">
+        <div class="tip-school" id="tlbl"></div>
+        <div class="tip-text" id="ttxt"></div>
+        <div class="tip-src" id="tsrc"></div>
+      </div>
+    </div>
+
+    <div class="dates-strip">
+      <div class="dates-top">
+        <div>
+          <div class="dates-title">2026 Orientation Dates — select yours to generate your prep timeline</div>
+          <div class="dates-note" id="dnote"></div>
+        </div>
+        <div class="dates-src" id="dsrc"></div>
+      </div>
+      <div class="dates-pills" id="dpills"></div>
+    </div>
+
+    <div class="content" id="content"></div>
+
+  </div>
+</main>
+
+<!-- FOOTER DISCLAIMER -->
+<div class="footer-disc">
+  <div class="footer-disc-box">
+    <i class="ti ti-info-circle fdisc-icon" aria-hidden="true"></i>
+    <p class="fdisc-text">
+      <strong>Disclaimer:</strong> Your College GPS compiles information from each university's official orientation and admitted-student pages as a convenience for incoming students.
+      Orientation dates, checklist requirements, deadlines, fees, and processes are subject to change at any time without notice.
+      This site is not affiliated with, endorsed by, or officially connected to any Texas university.
+      Always confirm current requirements directly on your school's official website before taking action.
+      Source links are provided throughout — use them.
+    </p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <p>
+      <a href="index.html">Your College GPS</a> · Built for incoming Texas college students · 2026<br>
+      Information sourced from official university websites · Not affiliated with any university
+    </p>
+  </div>
+</footer>
+
+<script>
+var DAY=864e5;
+var PHASES=[
+  {label:"Phase 1 — Do Immediately",color:"#DC2626",defaultWin:"As soon as you're admitted"},
+  {label:"Phase 2 — High Priority",color:"#D97706",defaultWin:"4–8 weeks before orientation"},
+  {label:"Phase 3 — 2–3 Weeks Out",color:"#2563EB",defaultWin:"2–3 weeks before orientation"},
+  {label:"Phase 4 — Final Week",color:"#6B7280",defaultWin:"Final week before orientation"}
+];
+function calcWindow(phase,oriDate){
+  if(!oriDate) return PHASES[phase].defaultWin;
+  var endDays=[30,13,6,0][phase], startDays=[120,29,13,6][phase];
+  var end=new Date(oriDate.getTime()-endDays*DAY);
+  var start=new Date(oriDate.getTime()-startDays*DAY);
+  var fmt=function(d){return d.toLocaleDateString('en-US',{month:'short',day:'numeric'});};
+  return phase===0?'Now → '+fmt(end):fmt(start)+' → '+fmt(end);
+}
+function parseDate(label){
+  var clean=label.replace(/\s*\(.*?\)/g,'').trim();
+  var MO={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+  var m=clean.match(/^([A-Za-z]+)\s+(\d+)/);
+  if(!m) return null;
+  var mo=MO[m[1]],day=parseInt(m[2],10);
+  return(mo===undefined||isNaN(day))?null:new Date(2026,mo,day);
+}
+
+var DB={
+  utd:{
+    tip:"Freshman Orientation is a 2-day program — this is where you meet your advisor and register for classes. All sign-ups and eLearning modules open March 16 in Orion. Your Enrollment Hold is only removed after you BOTH attend orientation AND complete the eLearning Pre-Orientation Module.",
+    src:'<a href="https://fye.utdallas.edu/orientation/" target="_blank" rel="noopener">fye.utdallas.edu/orientation</a>',
+    dates:["May (view in Orion after Mar 16)","Jun (view in Orion after Mar 16)","Jul (view in Orion after Mar 16)","Aug 19–20 (Honors only)"],
+    datesNote:"Exact dates appear in Orion after Mar 16 — sign up immediately when they open",
+    datesSrc:'<a href="https://fye.utdallas.edu/orientation/" target="_blank" rel="noopener">fye.utdallas.edu</a>',
+    sections:[
+      {icon:"ti-id",title:"Accounts & Portal",items:[
+        {t:"Activate your NetID and UTD email at utdallas.edu/netid",n:"Everything — Orion, Canvas, orientation signup — requires this first",u:0},
+        {t:"Enroll in DUO two-factor authentication",n:"Required to log into Orion and Canvas — do before attempting anything else",u:0},
+        {t:"Accept your offer of admission — required before you can register for orientation",u:0},
+        {t:"Log into Orion (Galaxy Portal) and review your To-Do List for any holds",n:"Holds block class registration — check and clear them weekly",u:0},
+        {t:"Complete the Freshman Pre-Orientation eLearning Module (opens Mar 16)",n:"Go to elearning.utdallas.edu → My Organizations → Freshman Orientation",u:1},
+        {t:"Register for Freshman Orientation in Orion (opens Mar 16) — pay at sign-up",n:"Payment required at registration; failure to pay results in cancellation",u:1}
+      ]},
+      {icon:"ti-receipt",title:"Financial Aid & Billing",items:[
+        {t:"Submit FAFSA — UTD school code is 009741",n:"Check Orion for Texas Grant, work-study, and UTD merit scholarships",u:0},
+        {t:"Accept or decline each financial aid award in Orion",n:"Awards expire if not acted on — log in regularly",u:1},
+        {t:"Pay tuition or set up a payment plan before the semester deadline",n:"Unpaid balances result in dropped classes",u:1}
+      ]},
+      {icon:"ti-heart-rate",title:"Required Health Step",items:[
+        {t:"Submit Bacterial Meningitis Vaccination (BMV) record via Orion",n:"Required by Texas law (SB 1107) for all students under 22 — must be on file before move-in",u:0}
+      ]},
+      {icon:"ti-home",title:"Housing",items:[
+        {t:"Apply for on-campus housing through Residential Life as early as possible",n:"All first-year students choosing to live on campus must live in the residence halls",u:1},
+        {t:"Review your dorm's prohibited items list and confirm your meal plan",n:"UTD allows microwave/fridge combo units — often rentable through the school",u:2}
+      ]},
+      {icon:"ti-school",title:"Academics & Class Research",items:[
+        {t:"Take math, CS, or language placement tests before your orientation session",n:"Required to enroll in those courses — complete before your session date",u:1},
+        {t:"Submit AP, IB, or dual enrollment transcripts for formal credit evaluation",n:"Must be officially evaluated — can change your entire first-semester plan",u:1},
+        {t:"Browse the UTD course catalog (catalog.utdallas.edu) for your major's required first-semester courses",n:"Know your required sequence before meeting your advisor at orientation",u:1},
+        {t:"Use Orion's Schedule of Classes to research sections, professors, and times",n:"Filter by professor, time slot, and modality (in-person vs online)",u:1},
+        {t:"Check RateMyProfessors for professors you're considering in large gateway courses",u:2},
+        {t:"Build a primary schedule AND at least one full backup before your session",n:"Registration happens live at orientation — popular sections fill within minutes",u:2}
+      ]}
+    ]
+  },
+  ut:{
+    tip:"DUO is the mandatory first step — without it you cannot access MyStatus, Canvas, or register for orientation. Sessions are 3-day/2-night in-person programs; August is virtual. Registration opens by college — check orientation.utexas.edu/registration for your college's exact date.",
+    src:'<a href="https://orientation.utexas.edu/orientation/freshman/orientation-dates" target="_blank" rel="noopener">orientation.utexas.edu</a>',
+    dates:["May 27–29","Jun 2–4","Jun 9–11","Jun 16–18","Jun 23–25","Jul 7–9","Jul 14–16","Aug 18–20 (Virtual)"],
+    datesNote:"2025 confirmed sessions — 2026 follows same pattern; verify at orientation.utexas.edu",
+    datesSrc:'<a href="https://orientation.utexas.edu/orientation/freshman/orientation-dates" target="_blank" rel="noopener">orientation.utexas.edu</a>',
+    sections:[
+      {icon:"ti-id",title:"EID, DUO & Email",items:[
+        {t:"Set up DUO two-factor authentication — the mandatory first step at UT",n:"Without DUO you cannot access MyStatus, MyUT, Canvas, Zoom, or orientation registration",u:0},
+        {t:"Upgrade your UT EID at the EID Upgrade Application portal",n:"Required to claim financial aid and conduct all university business online",u:0},
+        {t:"Set up your @my.utexas.edu student email and check it at least weekly",n:"All orientation, financial aid, and registration info goes here only",u:0}
+      ]},
+      {icon:"ti-calendar",title:"Orientation Registration",items:[
+        {t:"Sign the Financial Responsibility Statement before registering for classes",n:"Acknowledges your obligation to pay tuition — required before class registration",u:0},
+        {t:"Register for Longhorn Orientation the moment your college's window opens",n:"Check orientation.utexas.edu/registration for your college's specific opening date in Spring 2026",u:0},
+        {t:"Complete Canvas pre-orientation modules (~1 week before your session)",n:"Required before attending; covers academics, campus life, and health — takes 1–2 hours",u:1},
+        {t:"International students: also check in with Texas Global",n:"Required in addition to Longhorn Orientation for non-US citizens/permanent residents",u:1}
+      ]},
+      {icon:"ti-pencil",title:"Placement Tests",items:[
+        {t:"Take the UT Math Assessment (UTMA) if in Natural Sciences or planning Calculus I",n:"Purchase Math Readiness Package online; results in 24–48 hrs — complete before orientation",u:1},
+        {t:"Verify all AP, IB, and CLEP credits via Student Testing Services",n:"Determines credit already earned — directly affects your fall course plan",u:1}
+      ]},
+      {icon:"ti-heart-rate",title:"Required Health Step",items:[
+        {t:"Submit immunization records to University Health Services at least 2 weeks before your session",n:"Immunization Hold blocks advising at orientation — submit early",u:0}
+      ]},
+      {icon:"ti-home",title:"Housing",items:[
+        {t:"Apply for on-campus housing immediately after accepting admission",n:"UT has 15 residence halls — earlier application means better chance of your preference",u:1}
+      ]},
+      {icon:"ti-receipt",title:"Financial Aid",items:[
+        {t:"Complete FAFSA — UT Austin school code is 003658",n:"International students are not eligible and should not complete FAFSA",u:0},
+        {t:"Accept or decline your financial aid offers in MyUT",n:"Additional verification is often required — check MyUT frequently after submitting",u:1}
+      ]},
+      {icon:"ti-school",title:"Class Research",items:[
+        {t:"Browse UT Austin's Course Schedule at utdirect.utexas.edu before orientation",n:"Get familiar with the system before your session so you're not navigating it for the first time live",u:1},
+        {t:"Review UT's Course Instructor Survey (CIS) data for professors you're considering",n:"UT's own student survey — more reliable than third-party sites",u:1},
+        {t:"Understand your GenEd requirements — Signature Course and writing flag are mandatory",n:"Plan which first-semester courses satisfy these early",u:2},
+        {t:"Build a primary schedule and two full backups before orientation",n:"UT courses fill extremely fast during live advising — go in prepared",u:2}
+      ]}
+    ]
+  },
+  tamu:{
+    tip:"The NSC is how you formally accept your offer of admission — it is not optional and you cannot register for classes without attending. Before your NSC, complete Howdy Portal modules (available April 2026) and permanently select your tuition rate code (variable vs. locked) in Howdy.",
+    src:'<a href="https://newaggie.tamu.edu/students/nsc-dates/" target="_blank" rel="noopener">newaggie.tamu.edu</a>',
+    dates:["May 27–28","Jun 3–4","Jun 10–11","Jun 17–18","Jun 24–25","Jul 1–2","Jul 8–9","Jul 15–16","Jul 22–23","Aug 13 (1-day)","Aug 19 (1-day)"],
+    datesNote:"Confirmed Summer 2026 NSC dates — availability by college varies; log into AIS to see dates for your college",
+    datesSrc:'<a href="https://newaggie.tamu.edu/students/nsc-dates/" target="_blank" rel="noopener">newaggie.tamu.edu</a>',
+    sections:[
+      {icon:"ti-check",title:"Accept Admission & Howdy Portal",items:[
+        {t:"Confirm your admission in the Applicant Information System (AIS)",n:"This is your formal acceptance — required before you can register for any NSC",u:0},
+        {t:"Select your tuition rate code (variable vs. locked) in Howdy Portal",n:"Texas residents get a choice; non-residents are auto-assigned variable — this decision is PERMANENT",u:0},
+        {t:"Complete mandatory Howdy Portal orientation modules (available April 2026)",n:"Must be done before your NSC date — Summer/Fall admits wait until April to access",u:1}
+      ]},
+      {icon:"ti-calendar",title:"NSC Registration",items:[
+        {t:"Register for your NSC in AIS immediately — required to enroll in classes",n:"Your specific dates depend on your college's participation — log into AIS to check",u:0},
+        {t:"Submit your Aggie Card ID photo online to the My Aggie Card office",n:"Must be approved before your NSC — pick up your card in Rudder Exhibit Hall at the NSC",u:1},
+        {t:"Register for Fish Camp if interested (contact fishcamp@tamu.edu)",n:"Popular 3-day pre-semester program — fills quickly",u:2}
+      ]},
+      {icon:"ti-heart-rate",title:"Required Health Step",items:[
+        {t:"Submit Bacterial Meningitis Vaccination proof via the A&M health portal",n:"Required by Texas law for students under 22 — submit well before your NSC date",u:0}
+      ]},
+      {icon:"ti-home",title:"Housing",items:[
+        {t:"Apply for on-campus housing as soon as you confirm admission",n:"Corps of Cadets housing has a completely separate process — check Corps deadlines separately",u:1}
+      ]},
+      {icon:"ti-receipt",title:"Financial Aid",items:[
+        {t:"Complete FAFSA — Texas A&M school code is 003632",n:"Early submission gets priority packaging",u:0},
+        {t:"Check AIS for any missing financial aid verification documents",n:"Missing items delay disbursement",u:1}
+      ]},
+      {icon:"ti-school",title:"Class Research",items:[
+        {t:"Browse the A&M Undergraduate Catalog (catalog.tamu.edu) for your major's required courses",n:"Know your degree plan and required sequences before advising on Day 2 of your NSC",u:1},
+        {t:"If in science or engineering: complete the Chemistry Placement Module (CPM) before your NSC",n:"A hold blocks CHEM 119 registration until CPM or math equivalence is verified",u:1},
+        {t:"Use Howdy's Schedule of Classes to find section numbers and professor names",n:"Note these before you arrive so advising is fast and efficient",u:1},
+        {t:"Build your preferred course list and a full backup before your NSC",n:"Course registration happens live on Day 2 — prepared students get the sections they want",u:2}
+      ]}
+    ]
+  },
+  tech:{
+    tip:"RRO sessions are 2 days. Your session date is assigned through the eRaider Admitted Student Tasklist — you do not self-select it. Complete ALL RRO Online Modules before your session date; your 'Academic Orientation' hold is removed on session day only after modules are done.",
+    src:'<a href="https://www.depts.ttu.edu/orientation/FirstYear/" target="_blank" rel="noopener">depts.ttu.edu/orientation</a>',
+    dates:["May 17–18","May 28–29","Jun 4–5","Jun 11–12","Jul 9–10","Jul 16–17","Jul 23–24"],
+    datesNote:"Confirmed 2026 RRO windows — your exact 2-day slot is assigned via eRaider Tasklist",
+    datesSrc:'<a href="https://www.depts.ttu.edu/orientation/workwithus/" target="_blank" rel="noopener">depts.ttu.edu/orientation</a>',
+    sections:[
+      {icon:"ti-id",title:"eRaider & TechMail",items:[
+        {t:"Set up your eRaider account at eraider.ttu.edu",n:"Your login for all TTU systems — do this first",u:0},
+        {t:"Enable TechMail via eRaider → Email Services; check daily at outlook.com",n:"All official TTU communication including your RRO assignment goes here only",u:0},
+        {t:"Log into the Admitted Student Tasklist on eRaider and complete ALL items",n:"Some confirm in 24–48 hrs automatically; others require manual action",u:0},
+        {t:"Complete all RRO Online Modules before your session date",n:"Your 'Academic Orientation' hold only lifts on session day after modules are done",u:0}
+      ]},
+      {icon:"ti-calendar",title:"RRO Registration",items:[
+        {t:"Reserve your RRO session via the Tasklist (confirms in 24–48 hrs)",n:"This locks in your orientation date — treat it as your enrollment deadline",u:0},
+        {t:"Optionally add Red Raider Camp (RRC) for a 4-day combined experience",n:"RRC fee is $250 refundable until May 1; RRO fee $175 is separate on your eBill",u:2}
+      ]},
+      {icon:"ti-heart-rate",title:"Required Health Step",items:[
+        {t:"Submit Bacterial Meningitis Vaccination (BMV) proof before move-in",n:"Required by Texas law (SB 1107) for students under 22 living on campus",u:0},
+        {t:"Check your Tasklist for TSI (Texas Success Initiative) compliance requirements",n:"TSI holds can block registration — resolve before your RRO date",u:1}
+      ]},
+      {icon:"ti-home",title:"Housing",items:[
+        {t:"Apply for on-campus housing via the TTU Housing portal (in your Admitted Student Tasklist)",n:"First-year students without a contract by June 1 must complete the Housing Exemption Process",u:1}
+      ]},
+      {icon:"ti-receipt",title:"Financial Aid",items:[
+        {t:"Complete FAFSA — Texas Tech school code is 003644",u:0},
+        {t:"Review your tuition bill in eRaider and pay or set up a payment plan",n:"Unpaid balances result in dropped classes",u:1}
+      ]},
+      {icon:"ti-school",title:"Class Research",items:[
+        {t:"Browse the TTU Undergraduate Catalog (catalog.ttu.edu) for your major's required course sequence",n:"Know your degree plan before sitting down with your advisor at RRO",u:1},
+        {t:"Use Raiderlink's Visual Schedule Builder (VSB) to explore sections and times",n:"Note section CRN numbers before your advising session",u:1},
+        {t:"Check RateMyProfessors for gateway courses you're considering",u:2},
+        {t:"Build your ideal schedule and a full backup before your RRO date",n:"You'll register live with your advisor at RRO — prepared students get preferred sections",u:2}
+      ]}
+    ]
+  },
+  unt:{
+    tip:"2026 Freshman Orientation registration is already OPEN at my.unt.edu. Sessions 1–11 are 2-day overnight; sessions 12–13 are 1-day. Earlier session = wider course availability. Submit your TSI score or exemption to TSI@unt.edu before your session or your advisor meeting will be blocked.",
+    src:'<a href="https://studentaffairs.unt.edu/orientation-and-transition-programs/programs/orientation/" target="_blank" rel="noopener">studentaffairs.unt.edu</a>',
+    dates:["Jun 4–5 (Session 1)","Jun 9–10 (Session 2)","Jun 12–13 (Session 3)","Jun 16–17 (Session 4)","Jun 23–24 (Session 5)","Jun 26–27 (Session 6)","Jul 8–9 (Session 7)","Jul 14–15 (Session 8)","Jul 21–22 (Session 9)","Jul 28–29 (Session 10)","Aug (Session 12, 1-day)","Aug (Session 13, move-in day)"],
+    datesNote:"2025 session pattern — 2026 follows same structure; register now at my.unt.edu",
+    datesSrc:'<a href="https://studentaffairs.unt.edu/orientation-and-transition-programs/programs/orientation/" target="_blank" rel="noopener">orientation.unt.edu</a>',
+    sections:[
+      {icon:"ti-id",title:"EUID & Eagle Connect",items:[
+        {t:"Activate your EUID at my.unt.edu and set up Eagle Connect student email",n:"Unlocks orientation signup, Canvas, registration, and financial aid portal",u:0},
+        {t:"Register for Freshman Orientation NOW at my.unt.edu",n:"Registration is already open — sessions fill to capacity",u:0}
+      ]},
+      {icon:"ti-pencil",title:"TSI Requirement",items:[
+        {t:"Submit your TSI score or official TSI exemption to TSI@unt.edu",n:"Required before advisor meeting at orientation — a TSI hold will block advising",u:0},
+        {t:"If planning science, engineering, or math: take the UNT Math Placement Test before orientation",n:"Especially important for students needing Calculus I (MATH 1710) in their degree plan",u:1}
+      ]},
+      {icon:"ti-receipt",title:"Financial Aid",items:[
+        {t:"Complete FAFSA — UNT school code is 010365",n:"Also submit your SSN to the registrar if it wasn't on your application",u:0}
+      ]},
+      {icon:"ti-heart-rate",title:"Required Health Step",items:[
+        {t:"Submit Bacterial Meningitis Vaccination record before move-in (Texas SB 1107, under 22)",u:0}
+      ]},
+      {icon:"ti-home",title:"Housing",items:[
+        {t:"Apply for on-campus housing — Honors College students should specifically request Bruce Hall",n:"Bruce Hall has dedicated Honors floors — apply early",u:1},
+        {t:"Buy your parking permit on my.unt.edu before arriving",n:"Buying early is cheaper — especially important for commuter students",u:2}
+      ]},
+      {icon:"ti-school",title:"Class Research",items:[
+        {t:"Review your degree plan in the UNT Undergraduate Catalog (catalog.unt.edu)",n:"Know what's required vs. elective — your advisor will ask",u:1},
+        {t:"Explore available sections in my.unt.edu's Schedule of Classes before orientation",n:"Identify preferred sections and backups — some fill as soon as orientation season starts",u:1},
+        {t:"Check RateMyProfessors for gateway courses you're considering",u:2},
+        {t:"Come to orientation with a prepared course list and full backup",n:"Advisors work with you live on Day 2 — prepared students get better schedules",u:2}
+      ]}
+    ]
+  },
+  tcu:{
+    tip:"TCU has 3 required steps: (1) Register in MyTCU — opens late March 2026. (2) Complete Pre-Orientation Modules — launches April 2026. (3) Review orientation prep materials. A hold blocks class registration until modules are done. Academic advising is virtual before your session.",
+    src:'<a href="https://lsi.tcu.edu/nsfp/orientation/" target="_blank" rel="noopener">lsi.tcu.edu/nsfp/orientation</a>',
+    dates:["May 26–27","May 28–29","Jun 1–2","Jun 4–5","Jun 8–9","Jun 11–12","Jun 15–16","Jun 17–18","Jun 25–26","Jun 29–30","Jul 1–2","Jul 6–7"],
+    datesNote:"Confirmed 2026 TCU first-year orientation dates — registration opens late March 2026 in MyTCU",
+    datesSrc:'<a href="https://newfrog.tcu.edu/orientation/" target="_blank" rel="noopener">newfrog.tcu.edu/orientation</a>',
+    sections:[
+      {icon:"ti-id",title:"MyTCU — 3 Required Steps",items:[
+        {t:"Step 1: Pay enrollment deposit, then register for Orientation in MyTCU → Admitted Student tile (opens late March 2026)",n:"First-come, first-served — sessions cap at 250 students; do this immediately",u:0},
+        {t:"Set up your TCU email at newuser.tcu.edu and check it regularly",n:"All orientation details and university communication go here",u:0},
+        {t:"Step 2: Complete Pre-Orientation Modules in MyTCU (launches April 2026)",n:"A hold blocks class registration until modules are fully completed",u:0},
+        {t:"Step 3: Review orientation preparation materials at lsi.tcu.edu/nsfp/orientation",u:1},
+        {t:"Download Guidebook app once your session is confirmed",n:"Contains your accurate schedule with room locations",u:2}
+      ]},
+      {icon:"ti-calendar",title:"Orientation & Frog Camp",items:[
+        {t:"Your virtual advising appointment happens BEFORE orientation — check your email for the link",n:"TCU advising is separate from orientation; you register for classes virtually before arriving",u:1},
+        {t:"Consider Frog Camp — multi-day pre-orientation retreat",n:"Optional; most students say it's the best way to build real friendships before classes start",u:2}
+      ]},
+      {icon:"ti-heart-rate",title:"Required Health Step",items:[
+        {t:"Submit Bacterial Meningitis Vaccination documentation to the TCU Student Health Portal",n:"Required by Texas law for students under 22 — submit well before move-in",u:0}
+      ]},
+      {icon:"ti-receipt",title:"Financial Aid & Billing",items:[
+        {t:"Complete FAFSA — TCU school code is 003636",n:"Private university; institutional aid is significant — review all award components",u:0},
+        {t:"Accept each financial aid award in MyTCU",n:"Some scholarships require a separate acceptance step",u:1},
+        {t:"Review your bill carefully — some Neeley Business courses carry extra fees",u:2}
+      ]},
+      {icon:"ti-home",title:"Housing",items:[
+        {t:"Submit housing contract and roommate preference form as early as possible",n:"Popular halls fill shortly after admission offers go out",u:1}
+      ]},
+      {icon:"ti-school",title:"Class Research",items:[
+        {t:"Review the TCU Undergraduate Catalog (catalog.tcu.edu) for your major's required first-semester courses",n:"Know what's required before your virtual advising appointment",u:1},
+        {t:"Browse MyTCU's Schedule of Classes for sections, professors, and times",n:"Some departments have limited sections — identify backups",u:1},
+        {t:"Submit AP, IB, or dual credit transcripts for evaluation before your advising appointment",n:"Evaluated credits change what you need to take — affects your entire first-semester plan",u:1},
+        {t:"Build your course list and a backup before your virtual advising appointment",n:"You register for classes with your advisor virtually — come prepared",u:2}
+      ]}
+    ]
+  },
+  baylor:{
+    tip:"Orientation + Baylor Line Camp registration opens April 1, 2026 at exactly 9:00 AM CT — set an alarm. First-come, first-served. Academic advising at Baylor is scheduled virtually BEFORE your orientation session — you'll meet your advisor and register for classes before you arrive on campus.",
+    src:'<a href="https://welcome.web.baylor.edu/orientation-baylor-line-camp-welcome-week" target="_blank" rel="noopener">welcome.web.baylor.edu</a>',
+    dates:["Jun (exact dates released Apr 1, 2026)","Jul (exact dates released Apr 1, 2026)","2-day Orientation Only (limited slots)","Aug 20–23 (Welcome Week — all students)"],
+    datesNote:"Registration opens April 1, 2026 at 9:00 AM CT — set an alarm; sessions are first-come, first-served",
+    datesSrc:'<a href="https://nsp.web.baylor.edu/our-programs/orientation-advising/getting-ready-orientation" target="_blank" rel="noopener">nsp.web.baylor.edu</a>',
+    sections:[
+      {icon:"ti-id",title:"goBAYLOR & DUO",items:[
+        {t:"Activate your Bear ID and Baylor email at the goBAYLOR portal",n:"All Baylor communications go to your Baylor email — set it up and check daily",u:0},
+        {t:"Set up DUO two-factor authentication before orientation",n:"Required for Canvas, BearWeb, Box, and all Baylor systems",u:0},
+        {t:"Complete your Enrollment Guide checklist in goBAYLOR",n:"Master list of everything needed to fully enroll — your orientation dashboard",u:0},
+        {t:"Download the Navigate Student app and complete the intake survey",n:"Required before your virtual advising appointment",u:1},
+        {t:"Complete Foundations online modules in goBAYLOR (opens March 2026)",n:"Complete before arriving on campus — covers essential Baylor resources",u:1}
+      ]},
+      {icon:"ti-calendar",title:"Orientation Registration",items:[
+        {t:"Register for Orientation at exactly 9:00 AM CT on April 1, 2026",n:"First-come, first-served — pay $500 enrollment deposit first or you cannot register",u:0},
+        {t:"Your virtual advising appointment happens BEFORE your orientation session",n:"You meet your advisor and register for classes virtually — check goBAYLOR for your appointment link",u:1}
+      ]},
+      {icon:"ti-heart-rate",title:"Required Health Step",items:[
+        {t:"Submit BMV documentation to Baylor as soon as possible",n:"NOT required for Orientation — IS required for move-in; allow 1–2 weeks processing time",u:0}
+      ]},
+      {icon:"ti-receipt",title:"Financial Aid",items:[
+        {t:"Complete FAFSA — Baylor school code is 003545",n:"Private university; institutional aid is significant — review all award components",u:0},
+        {t:"Accept aid awards in goBAYLOR and confirm any GPA requirements",n:"Many Baylor merit scholarships require maintaining specific GPA thresholds each semester",u:1}
+      ]},
+      {icon:"ti-home",title:"Housing",items:[
+        {t:"Apply for Baylor housing early — on-campus halls prioritize early applicants",u:1},
+        {t:"Select your meal plan and review residence hall policies before packing",u:2}
+      ]},
+      {icon:"ti-school",title:"Class Research",items:[
+        {t:"Review the Baylor Undergraduate Catalog (catalog.baylor.edu) for required courses and prerequisites",n:"Note which courses are prerequisites for others — affects what you can take first semester",u:1},
+        {t:"Explore BearWeb's Schedule of Classes for section times and professor names",n:"Limited sections in some departments — know your backups",u:1},
+        {t:"Come to your virtual advising appointment with a course list and backup",n:"Advising happens virtually before orientation — prepared students get better outcomes",u:1},
+        {t:"Ask Baylor Line Camp peer leaders for course and professor recommendations",n:"A low-pressure opportunity to get real advice from current students",u:2}
+      ]}
+    ]
+  },
+  uh:{
+    tip:"NSO registration opened March 16, 2026 — register now if you haven't. Pre-Orientation Modules become available May 4, 2026 and MUST be completed before your session to remove the Pre-Orientation Hold blocking class enrollment. Two-day freshman NSO requires overnight stay. No waitlists.",
+    src:'<a href="https://www.uh.edu/undergraduate-admissions/admitted-students/new-student-and-transfer-orientation/" target="_blank" rel="noopener">uh.edu/orientation</a>',
+    dates:["May 15–16","May 28–29","Jun 4–5","Jun 11–12","Jun 18–19","Jun 25–26","Jul 9–10","Jul 16–17","Jul 23–24","Jul 30–31","Aug (1-day, combined)"],
+    datesNote:"Confirmed session windows — register at uh.edu/orientation (opened Mar 16, 2026); no waitlists",
+    datesSrc:'<a href="https://www.uh.edu/undergraduate-admissions/admitted-students/new-student-and-transfer-orientation/" target="_blank" rel="noopener">uh.edu/orientation</a>',
+    sections:[
+      {icon:"ti-id",title:"AccessUH, DUO & CougarNet",items:[
+        {t:"Set up AccessUH — confirm your myUH numerical ID and your CougarNet username",n:"Two separate credentials — you need both for different UH systems",u:0},
+        {t:"Set up your UH CougarNet email and check it frequently",n:"All financial aid, registration, and orientation info goes here only",u:0},
+        {t:"Install and configure the DUO Mobile authenticator app",n:"Required for secure login to all UH technology systems",u:0}
+      ]},
+      {icon:"ti-file",title:"Pre-Orientation Modules (REQUIRED)",items:[
+        {t:"Register for NSO at uh.edu/orientation — registration opened March 16, 2026",n:"No waitlists — when a date fills it is gone",u:0},
+        {t:"Complete Pre-Orientation Modules in AccessUH → myUH Self Service → Admissions (available May 4, 2026)",n:"REQUIRED: removes your Pre-Orientation Hold and enables class enrollment",u:0},
+        {t:"Confirm your major is correct at least 2 weeks before your session",n:"Change of major requires 2 weeks notice; wrong major = wrong advisor and wrong courses",u:1}
+      ]},
+      {icon:"ti-heart-rate",title:"Required Health Step",items:[
+        {t:"Submit Bacterial Meningitis Vaccination record before your orientation session",n:"Must be on file to receive advising and register for classes at orientation",u:0}
+      ]},
+      {icon:"ti-home",title:"Housing & Parking",items:[
+        {t:"Apply for housing through Student Housing and Residential Life (713-743-6000)",n:"Honors students: request Cougar Village 1 floors 6–7 or Cougar Place floor 1",u:1},
+        {t:"Buy your parking permit during or before orientation",n:"UH is commuter-heavy; citations are aggressively enforced on campus",u:2}
+      ]},
+      {icon:"ti-receipt",title:"Financial Aid & Cougar Card",items:[
+        {t:"Complete FAFSA or TASFA — UH school code is 003652",n:"Check myUH frequently — additional verification is often required after submission",u:0},
+        {t:"Accept financial aid offers in AccessUH and note any scholarship conditions",u:1},
+        {t:"Get your Cougar Card (student ID) — required for dining, events, library, and building access",n:"Processed through AccessUH — the most important piece of ID on campus",u:1}
+      ]},
+      {icon:"ti-school",title:"Class Research",items:[
+        {t:"Follow the USSC Enrollment Ready guide and review your 4-year Academic Map in the UH Undergraduate Catalog",n:"Understand prerequisites for every course — a common first-year surprise",u:1},
+        {t:"Use UH's Schedule Builder (via AccessUH) to explore sections, professors, and times",n:"Adding courses to your cart does NOT complete enrollment — that happens after NSO advising",u:1},
+        {t:"Verify how AP, IB, or dual credit transfers in AccessUH before your session",n:"Credits verified in advance let you start at the right point on your Academic Map",u:1},
+        {t:"Build a primary schedule and backup before your NSO date",n:"Enrollment opens directly from Schedule Builder after your advisor meeting at NSO",u:2}
+      ]}
+    ]
+  }
+};
+
+var checked={},curSchool='utd',curView='timeline',curDateIdx=null,openSec=null;
+
+// Read ?school= param from URL
+(function(){
+  var p=new URLSearchParams(window.location.search).get('school');
+  if(p&&DB[p]){curSchool=p;document.getElementById('sch').value=p;}
+})();
+
+function allItems(s){var a=[];DB[s].sections.forEach(function(sec,si){sec.items.forEach(function(item,ii){a.push({item:item,si:si,ii:ii});});});return a;}
+function totalItems(s){return allItems(s).length;}
+function doneCount(s){var d=0;allItems(s).forEach(function(x){if(checked[s+'-'+x.si+'-'+x.ii])d++;});return d;}
+function secDoneCount(s,si){var d=0;DB[s].sections[si].items.forEach(function(_,ii){if(checked[s+'-'+si+'-'+ii])d++;});return d;}
+
+function updateMeter(){
+  var t=totalItems(curSchool),d=doneCount(curSchool),p=t?Math.round((d/t)*100):0;
+  document.getElementById('pfill').style.width=p+'%';
+  document.getElementById('ppct').textContent=p+'%';
+  document.getElementById('pcount').textContent=d+' of '+t+' done';
+}
+function updateTip(){
+  var D=DB[curSchool];
+  document.getElementById('tlbl').textContent=D.tip.split('.')[0].substring(0,55)+'...';
+  document.getElementById('ttxt').textContent=D.tip;
+  document.getElementById('tsrc').innerHTML='Source: '+D.src;
+}
+function updateDates(){
+  var D=DB[curSchool];
+  document.getElementById('dnote').textContent=D.datesNote;
+  document.getElementById('dsrc').innerHTML=D.datesSrc;
+  var c=document.getElementById('dpills');c.innerHTML='';
+  D.dates.forEach(function(dt,i){
+    var b=document.createElement('button');
+    b.className='date-pill'+(curDateIdx===i?' sel':'');
+    b.textContent=dt;
+    b.setAttribute('aria-pressed',curDateIdx===i?'true':'false');
+    b.addEventListener('click',function(){curDateIdx=(curDateIdx===i)?null:i;updateDates();renderContent();});
+    c.appendChild(b);
+  });
+}
+function getOriDate(){return curDateIdx===null?null:parseDate(DB[curSchool].dates[curDateIdx]);}
+
+function renderTimeline(){
+  var content=document.getElementById('content');
+  var oriDate=getOriDate();
+  var uc=[PHASES[0].color,PHASES[1].color,PHASES[2].color,PHASES[3].color];
+  var labels=['Critical — do immediately','High priority','2–3 weeks out','Final week'];
+  var html='<div class="uk">';
+  labels.forEach(function(l,i){html+='<span class="uk-i"><span class="uk-dot" style="background:'+uc[i]+'"></span>'+l+'</span>';});
+  html+='</div>';
+  if(!oriDate) html+='<div class="no-date-msg">👆 Select an orientation date above to see exact calendar windows for each phase.</div>';
+  var frag='';
+  [0,1,2,3].forEach(function(phase){
+    var items=[];
+    DB[curSchool].sections.forEach(function(sec,si){sec.items.forEach(function(item,ii){if(item.u===phase)items.push({item:item,si:si,ii:ii});});});
+    if(!items.length) return;
+    frag+='<div class="phase"><div class="ph-head"><div class="ph-dot"></div><span class="ph-title">'+PHASES[phase].label+'</span><span class="ph-win">'+calcWindow(phase,oriDate)+'</span></div><div class="ph-line">';
+    items.forEach(function(x){
+      var key=curSchool+'-'+x.si+'-'+x.ii,ck=checked[key];
+      frag+='<div class="t-item'+(ck?' done':'')+'" data-key="'+key+'" role="checkbox" aria-checked="'+(ck?'true':'false')+'" tabindex="0">';
+      frag+='<div class="urg-bar" style="background:'+uc[phase]+'"></div>';
+      frag+='<div class="chkbox'+(ck?' on':'')+'"></div>';
+      frag+='<div style="flex:1"><div class="i-text">'+x.item.t+'</div>'+(x.item.n?'<div class="i-note">'+x.item.n+'</div>':'')+'</div></div>';
+    });
+    frag+='</div></div>';
+  });
+  content.innerHTML=html+frag;
+  content.querySelectorAll('.t-item').forEach(function(row){
+    function toggle(){var k=row.dataset.key;checked[k]=!checked[k];renderTimeline();updateMeter();}
+    row.addEventListener('click',toggle);
+    row.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();toggle();}});
+  });
+}
+
+function renderChecklist(){
+  var content=document.getElementById('content');content.innerHTML='';
+  DB[curSchool].sections.forEach(function(sec,si){
+    var card=document.createElement('div');card.className='sec-card';
+    var nd=secDoneCount(curSchool,si),tot=sec.items.length;
+    var head=document.createElement('div');head.className='sec-head';
+    head.setAttribute('role','button');head.setAttribute('tabindex','0');
+    var bc='sec-badge'+(nd===tot&&tot>0?' complete':'');
+    head.innerHTML='<i class="ti '+sec.icon+' sec-icon" aria-hidden="true"></i><span class="sec-title">'+sec.title+'</span><span class="'+bc+'">'+nd+'/'+tot+'</span><i class="ti ti-chevron-down sec-chev'+(openSec===curSchool+'-'+si?' open':'')+'" aria-hidden="true"></i>';
+    var body=document.createElement('div');body.className='sec-body'+(openSec===curSchool+'-'+si?' open':'');
+    sec.items.forEach(function(item,ii){
+      var key=curSchool+'-'+si+'-'+ii,ck=checked[key];
+      var row=document.createElement('div');row.className='c-item'+(ck?' done':'');row.dataset.key=key;
+      row.setAttribute('role','checkbox');row.setAttribute('aria-checked',ck?'true':'false');row.setAttribute('tabindex','0');
+      row.innerHTML='<div class="chkbox'+(ck?' on':'')+'"></div><div><div class="i-text">'+item.t+'</div>'+(item.n?'<div class="i-note">'+item.n+'</div>':'')+'</div>';
+      function toggle(){checked[key]=!checked[key];renderChecklist();updateMeter();}
+      row.addEventListener('click',toggle);
+      row.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();toggle();}});
+      body.appendChild(row);
+    });
+    function toggleSec(){var k=curSchool+'-'+si;openSec=openSec===k?null:k;renderChecklist();}
+    head.addEventListener('click',toggleSec);
+    head.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();toggleSec();}});
+    card.appendChild(head);card.appendChild(body);content.appendChild(card);
+  });
+}
+
+function renderContent(){curView==='timeline'?renderTimeline():renderChecklist();}
+
+document.getElementById('sch').addEventListener('change',function(){
+  curSchool=this.value;curDateIdx=null;openSec=null;
+  updateTip();updateDates();renderContent();updateMeter();
+});
+document.querySelectorAll('.vtab').forEach(function(b){
+  b.addEventListener('click',function(){
+    curView=this.dataset.view;
+    document.querySelectorAll('.vtab').forEach(function(x){x.classList.remove('active');x.setAttribute('aria-selected','false');});
+    this.classList.add('active');this.setAttribute('aria-selected','true');
+    renderContent();
+  });
+});
+
+updateTip();updateDates();renderContent();updateMeter();
+</script>
+</body>
+</html>
