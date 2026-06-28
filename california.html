@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UC Schools Orientation Checklist — Your College GPS</title>
+<meta name="description" content="School-specific orientation checklists for every UC campus. Real 2026 dates sourced from official university pages.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#F7F4EF;--surface:#FFFFFF;--border:#E4DDD3;--border-lt:#EDE8E2;
+  --text:#1A1714;--text-2:#6B6560;--text-3:#9E9891;
+  --accent:#1D4ED8;--accent-lt:#EFF6FF;--accent-dk:#1E40AF;
+  --orange:#BF4C00;--orange-lt:#FAECE7;
+  --font-disp:'Syne',sans-serif;--font-body:'Inter',sans-serif;
+  --radius-sm:6px;--radius-md:10px;--radius-lg:16px;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.06),0 2px 8px rgba(0,0,0,.04);
+  --shadow:0 2px 6px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.06);
+}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.nav{position:sticky;top:0;z-index:200;background:rgba(247,244,239,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);height:58px;padding:0 2rem;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:9px;text-decoration:none}
+.nav-logo{width:30px;height:30px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.nav-logo i{color:white;font-size:16px}
+.nav-name{font-family:var(--font-disp);font-size:15px;font-weight:800;color:var(--text)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-link{font-size:13px;color:var(--text-2);padding:6px 12px;border-radius:var(--radius-sm);text-decoration:none;transition:background .15s,color .15s}
+.nav-link:hover{background:var(--border-lt);color:var(--text)}
+.nav-cta{font-size:13px;font-weight:600;padding:7px 16px;border-radius:var(--radius-sm);background:var(--orange);color:white;text-decoration:none;transition:opacity .15s;margin-left:8px}
+.nav-cta:hover{opacity:.88}
+.page-hdr{max-width:860px;margin:0 auto;padding:2.5rem 1.5rem 1.25rem}
+.page-hdr-eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-lt);border:1px solid #BFDBFE;border-radius:999px;padding:5px 14px;margin-bottom:1.25rem}
+.page-hdr h1{font-family:var(--font-disp);font-size:clamp(22px,3.5vw,32px);font-weight:800;color:var(--text);margin-bottom:.5rem}
+.page-hdr p{font-size:14px;color:var(--text-2);line-height:1.65;max-width:580px}
+.disc-banner{max-width:860px;margin:0 auto;padding:0 1.5rem .875rem}
+.disc-box{background:#FFFBEB;border:1px solid #FDE68A;border-radius:var(--radius-md);padding:.75rem 1rem;display:flex;align-items:flex-start;gap:9px}
+.disc-icon{font-size:15px;color:#D97706;flex-shrink:0;margin-top:1px}
+.disc-text{font-size:12px;color:#92400E;line-height:1.6}
+.disc-text strong{font-weight:600}
+.main-wrap{max-width:860px;margin:0 auto 3rem;padding:0 1.5rem}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden}
+.controls-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:1rem 1.25rem;border-bottom:1px solid var(--border-lt);background:var(--bg)}
+.ctrl-label{font-size:12px;color:var(--text-3);white-space:nowrap}
+.school-select{font-family:var(--font-body);font-size:13px;font-weight:500;padding:6px 28px 6px 10px;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B6560' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;cursor:pointer}
+.school-select:focus{outline:2px solid var(--accent);outline-offset:1px}
+.view-tabs{display:flex;gap:3px;margin-left:auto}
+.vtab{font-family:var(--font-body);font-size:12px;font-weight:500;padding:5px 12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--surface);color:var(--text-2);cursor:pointer;transition:all .15s}
+.vtab:hover{border-color:var(--accent);color:var(--accent)}
+.vtab.active{background:var(--accent);color:white;border-color:var(--accent)}
+.progress-row{display:flex;align-items:center;gap:12px;padding:.625rem 1.25rem;border-bottom:1px solid var(--border-lt)}
+.p-label{font-size:11px;color:var(--text-3);white-space:nowrap}
+.p-track{flex:1;height:4px;background:var(--border-lt);border-radius:999px;overflow:hidden}
+.p-fill{height:100%;background:var(--accent);border-radius:999px;transition:width .35s ease}
+.p-pct{font-size:12px;font-weight:600;color:var(--accent);min-width:30px;text-align:right}
+.p-count{font-size:11px;color:var(--text-3);white-space:nowrap}
+.tip-strip{display:flex;gap:10px;align-items:flex-start;padding:.875rem 1.25rem;border-bottom:1px solid var(--border-lt);background:var(--accent-lt)}
+.tip-icon{font-size:16px;color:var(--accent);flex-shrink:0;margin-top:1px}
+.tip-body{flex:1}
+.tip-school{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.tip-text{font-size:12.5px;color:var(--text);line-height:1.55}
+.tip-src{font-size:11px;color:var(--text-3);margin-top:4px}
+.tip-src a{color:var(--text-3);text-decoration:underline}
+.dates-strip{padding:.875rem 1.25rem;border-bottom:1px solid var(--border-lt)}
+.dates-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.5rem;gap:8px;flex-wrap:wrap}
+.dates-title{font-size:12px;font-weight:600;color:var(--text)}
+.dates-note{font-size:11px;color:var(--text-3);margin-top:2px}
+.dates-src{font-size:11px;color:var(--text-3);flex-shrink:0}
+.dates-src a{color:var(--text-3);text-decoration:underline}
+.dates-pills{display:flex;flex-wrap:wrap;gap:5px;margin-top:.5rem}
+.date-pill{font-size:11px;font-weight:500;padding:4px 11px;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--text-2);cursor:pointer;transition:all .15s;white-space:nowrap}
+.date-pill:hover{border-color:var(--accent);color:var(--accent)}
+.date-pill.sel{background:var(--accent);color:white;border-color:var(--accent)}
+.content{padding:1.25rem}
+.uk{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:1rem}
+.uk-i{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-3)}
+.uk-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.no-date-msg{font-size:12px;color:var(--text-2);font-style:italic;padding:.625rem .875rem;margin-bottom:1rem;background:var(--bg);border-radius:var(--radius-sm);border:1px dashed var(--border)}
+.phase{margin-bottom:1.5rem}
+.phase:last-child{margin-bottom:0}
+.ph-head{display:flex;align-items:center;gap:8px;margin-bottom:.75rem;flex-wrap:wrap}
+.ph-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.ph-title{font-size:13px;font-weight:600;color:var(--text)}
+.ph-win{font-size:11px;color:var(--text-3);background:var(--bg);border:1px solid var(--border);border-radius:999px;padding:2px 9px;white-space:nowrap;margin-left:auto}
+.ph-line{border-left:1.5px solid var(--border-lt);margin-left:3px;padding-left:1.25rem}
+.t-item{display:flex;align-items:flex-start;gap:10px;padding:9px 11px;background:var(--surface);border:1px solid var(--border-lt);border-radius:var(--radius-md);cursor:pointer;transition:background .12s,border-color .12s;margin-bottom:6px}
+.t-item:last-child{margin-bottom:0}
+.t-item:hover{background:var(--bg);border-color:var(--border)}
+.t-item.done{opacity:.5}
+.urg-bar{width:3px;border-radius:2px;align-self:stretch;flex-shrink:0}
+.chkbox{width:17px;height:17px;border-radius:5px;border:1.5px solid var(--border);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;background:var(--surface);transition:all .15s}
+.chkbox.on{background:var(--accent);border-color:var(--accent)}
+.chkbox.on::after{content:'';display:block;width:7px;height:4px;border-left:1.5px solid white;border-bottom:1.5px solid white;transform:rotate(-45deg) translateY(-1px)}
+.i-text{font-size:13px;color:var(--text);line-height:1.45;flex:1}
+.i-note{font-size:11px;color:var(--text-3);margin-top:3px;line-height:1.4}
+.t-item.done .i-text{text-decoration:line-through;color:var(--text-3)}
+.sec-card{background:var(--surface);border:1px solid var(--border-lt);border-radius:var(--radius-md);margin-bottom:8px;overflow:hidden}
+.sec-card:last-child{margin-bottom:0}
+.sec-head{display:flex;align-items:center;gap:10px;padding:.75rem 1rem;cursor:pointer;user-select:none;transition:background .12s}
+.sec-head:hover{background:var(--bg)}
+.sec-icon{font-size:16px;color:var(--accent)}
+.sec-title{font-size:13.5px;font-weight:600;flex:1;color:var(--text)}
+.sec-badge{font-size:11px;color:var(--text-3);background:var(--bg);border:1px solid var(--border);border-radius:999px;padding:2px 9px}
+.sec-badge.complete{background:#ECFDF5;color:#059669;border-color:#A7F3D0}
+.sec-chev{font-size:14px;color:var(--text-3);transition:transform .2s}
+.sec-chev.open{transform:rotate(180deg)}
+.sec-body{display:none;border-top:1px solid var(--border-lt)}
+.sec-body.open{display:block}
+.c-item{display:flex;align-items:flex-start;gap:10px;padding:8px 1rem;border-bottom:1px solid var(--border-lt);cursor:pointer;transition:background .12s}
+.c-item:last-of-type{border-bottom:none}
+.c-item:hover{background:var(--bg)}
+.c-item.done{opacity:.5}
+.c-item.done .i-text{text-decoration:line-through;color:var(--text-3)}
+.footer-disc{max-width:860px;margin:0 auto 1rem;padding:0 1.5rem}
+.footer-disc-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:.875rem 1.125rem;display:flex;align-items:flex-start;gap:9px}
+.fdisc-icon{font-size:15px;color:var(--text-3);flex-shrink:0;margin-top:1px}
+.fdisc-text{font-size:11.5px;color:var(--text-3);line-height:1.65}
+.footer{border-top:1px solid var(--border);padding:1.5rem;text-align:center}
+.footer-inner{max-width:860px;margin:0 auto}
+.footer p{font-size:12px;color:var(--text-3);line-height:1.65}
+.footer a{color:var(--orange);text-decoration:none}
+.footer a:hover{text-decoration:underline}
+@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.phase{animation:fadeIn .2s ease both}
+.sec-card{animation:fadeIn .15s ease both}
+@media(max-width:600px){
+  .nav-links{display:none}
+  .page-hdr{padding:1.5rem 1rem .75rem}
+  .main-wrap,.disc-banner,.footer-disc{padding-left:1rem;padding-right:1rem}
+  .view-tabs .vtab span{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-brand" href="index.html">
+    <div class="nav-logo"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
+    <span class="nav-name">Your College GPS</span>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="about.html">About us</a>
+    <a class="nav-link" href="welcome.html#covered">What's covered</a>
+    <a class="nav-link" href="welcome.html#states">States</a>
+    <a class="nav-cta" href="welcome.html#states">Open checklist →</a>
+  </div>
+</nav>
+
+<div class="page-hdr">
+  <div class="page-hdr-eyebrow"><i class="ti ti-map-pin" aria-hidden="true"></i> California — UC System</div>
+  <h1>UC Schools Orientation Checklist</h1>
+  <p>School-specific checklists for every UC campus, sourced from each university's official admitted-student and orientation pages. Select your campus, pick your orientation date, and work through tasks by priority.</p>
+</div>
+
+<div class="disc-banner">
+  <div class="disc-box">
+    <i class="ti ti-alert-triangle disc-icon" aria-hidden="true"></i>
+    <p class="disc-text"><strong>Always verify dates and requirements directly with your UC campus.</strong> Information is sourced from official pages but changes frequently. Confirm everything on your school's official site before taking action.</p>
+  </div>
+</div>
+
+<main class="main-wrap">
+  <div class="card">
+    <div class="controls-bar">
+      <span class="ctrl-label">Your UC campus:</span>
+      <select class="school-select" id="sch" aria-label="Select your UC campus">
+        <option value="berkeley">UC Berkeley</option>
+        <option value="ucla">UCLA</option>
+        <option value="ucsd">UC San Diego</option>
+        <option value="ucd">UC Davis</option>
+        <option value="uci">UC Irvine</option>
+        <option value="ucsb">UC Santa Barbara</option>
+        <option value="ucsc">UC Santa Cruz</option>
+        <option value="ucr">UC Riverside</option>
+        <option value="ucm">UC Merced</option>
+      </select>
+      <div class="view-tabs" role="tablist">
+        <button class="vtab active" data-view="timeline" role="tab">📅 <span>Timeline</span></button>
+        <button class="vtab" data-view="checklist" role="tab">☑️ <span>Checklist</span></button>
+      </div>
+    </div>
+    <div class="progress-row">
+      <span class="p-label">Readiness</span>
+      <div class="p-track"><div class="p-fill" id="pfill" style="width:0%"></div></div>
+      <span class="p-pct" id="ppct">0%</span>
+      <span class="p-count" id="pcount">0 done</span>
+    </div>
+    <div class="tip-strip">
+      <i class="ti ti-bulb tip-icon" aria-hidden="true"></i>
+      <div class="tip-body">
+        <div class="tip-school" id="tlbl"></div>
+        <div class="tip-text" id="ttxt"></div>
+        <div class="tip-src" id="tsrc"></div>
+      </div>
+    </div>
+    <div class="dates-strip">
+      <div class="dates-top">
+        <div>
+          <div class="dates-title">2026 Orientation Dates — select yours to generate your prep timeline</div>
+          <div class="dates-note" id="dnote"></div>
+        </div>
+        <div class="dates-src" id="dsrc"></div>
+      </div>
+      <div class="dates-pills" id="dpills"></div>
+    </div>
+    <div class="content" id="content"></div>
+  </div>
+</main>
+
+<div class="footer-disc">
+  <div class="footer-disc-box">
+    <i class="ti ti-info-circle fdisc-icon" aria-hidden="true"></i>
+    <p class="fdisc-text"><strong>Disclaimer:</strong> Your College GPS is an independent student-built resource not affiliated with, endorsed by, or officially connected to any UC campus or the University of California system. All information is sourced from official university websites for convenience only. Dates, requirements, and processes change. Always verify directly on your campus's official site before taking action.</p>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p><a href="index.html">Your College GPS</a> · <a href="texas.html">Texas checklist</a> · <a href="about.html">About us</a> · Not affiliated with any university · 2026</p>
+  </div>
+</footer>
+
+<script>
+var DAY=864e5;
+var PHASES=[
+  {label:"Phase 1 — Do Immediately",    color:"#DC2626", defaultWin:"As soon as you're admitted"},
+  {label:"Phase 2 — High Priority",     color:"#D97706", defaultWin:"4–8 weeks before orientation"},
+  {label:"Phase 3 — 2–3 Weeks Out",     color:"#2563EB", defaultWin:"2–3 weeks before orientation"},
+  {label:"Phase 4 — Final Week",        color:"#6B7280", defaultWin:"Final week before orientation"}
+];
+function calcWindow(phase,oriDate){
+  if(!oriDate) return PHASES[phase].defaultWin;
+  var endDays=[30,13,6,0][phase],startDays=[120,29,13,6][phase];
+  var end=new Date(oriDate.getTime()-endDays*DAY);
+  var start=new Date(oriDate.getTime()-startDays*DAY);
+  var fmt=function(d){return d.toLocaleDateString('en-US',{month:'short',day:'numeric'});};
+  return phase===0?'Now → '+fmt(end):fmt(start)+' → '+fmt(end);
+}
+function parseDate(label){
+  var clean=label.replace(/\s*\(.*?\)/g,'').trim();
+  var MO={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+  var m=clean.match(/^([A-Za-z]+)\s+(\d+)/);
+  if(!m) return null;
+  var mo=MO[m[1]],day=parseInt(m[2],10);
+  return(mo===undefined||isNaN(day))?null:new Date(2026,mo,day);
+}
+
+var DB={
+  berkeley:{
+    tip:"UC Berkeley's orientation is called the Golden Bear Experience and has four mandatory parts: Golden Bear Advising (online), Golden Bear Prep (online), Golden Bear Orientation (in-person Aug 19–24), and Getting Your Bearings. Your first step is accepting your offer and creating your CalNet ID, which unlocks CalCentral where all tasks and deadlines live. The New Student Programming Fee is $550 and is billed to your first semester CalCentral bill.",
+    src:'<a href="https://orientation.berkeley.edu/new-students/" target="_blank" rel="noopener">orientation.berkeley.edu</a>',
+    dates:["Aug 19 (GBO begins)","Aug 20","Aug 21","Aug 22","Aug 23","Aug 24 (GBO ends)"],
+    datesNote:"Golden Bear Orientation runs Aug 19–24, 2026. Golden Bear Advising and Prep are completed online before this.",
+    datesSrc:'<a href="https://orientation.berkeley.edu/new-students/golden-bear-experience/golden-bear-orientation-overview/" target="_blank" rel="noopener">orientation.berkeley.edu</a>',
+    sections:[
+      {icon:"ti-id",title:"CalNet ID & CalCentral",items:[
+        {t:"Accept your offer of admission and create your CalNet ID",n:"Required before you can access CalCentral, which holds all your orientation tasks and deadlines",u:0},
+        {t:"Log into CalCentral and review your My Dashboard Tasks tab",n:"All orientation steps, holds, and enrollment actions are managed here",u:0},
+        {t:"Set up your Berkeley email and check it regularly from May through August",n:"All critical orientation deadlines and information are sent here",u:0},
+        {t:"Download the Cal Events app for your Golden Bear Orientation schedule",n:"Your specific GBO schedule is delivered through this app",u:1}
+      ]},
+      {icon:"ti-calendar",title:"Golden Bear Experience (4 parts)",items:[
+        {t:"Complete Golden Bear Advising online (opens in CalCentral after admission accepted)",n:"Online academic advising component — must be done before you can enroll in courses",u:0},
+        {t:"Complete Golden Bear Prep online modules",n:"Second online component covering campus life, resources, and community expectations",u:1},
+        {t:"Attend Golden Bear Orientation in person August 19–24, 2026",n:"Mandatory 5-day in-person program in small groups with two Orientation Leaders",u:1},
+        {t:"Complete Getting Your Bearings (post-orientation component)",n:"Final phase of the Golden Bear Experience after GBO ends",u:2},
+        {t:"If you have barriers to attending GBO in person, submit the Exemption and Accommodations Form by July 19, 2026",n:"Submit to nss@berkeley.edu — exemptions are reviewed individually",u:1}
+      ]},
+      {icon:"ti-receipt",title:"Financial aid & billing",items:[
+        {t:"Submit your FAFSA or California Dream Act Application — UC Berkeley school code is 001312",n:"California residents: Cal Grant GPA verification form is also required by March 2",u:0},
+        {t:"Check CalCentral for your financial aid award and accept or decline each offer",u:1},
+        {t:"Note the $550 New Student Programming Fee on your first semester bill",n:"Covers all four Golden Bear Experience components; check if your financial aid package includes a New Student Grant to cover it",u:2}
+      ]},
+      {icon:"ti-heart-rate",title:"Health & immunizations",items:[
+        {t:"Submit immunization records to the UC Berkeley health portal",n:"Required before enrollment; immunization holds block course registration",u:0}
+      ]},
+      {icon:"ti-home",title:"Housing",items:[
+        {t:"Apply for on-campus housing through Residential and Student Service Programs",n:"Berkeley guarantees housing for incoming freshmen who apply by the deadline — apply immediately after accepting",u:0},
+        {t:"Submit the Cal1Card photo online through CalCentral",n:"Your student ID used for building access, dining, transit, and campus resources",u:1}
+      ]},
+      {icon:"ti-school",title:"Academics & class research",items:[
+        {t:"Review your major's prerequisite and course requirements in the UC Berkeley Undergraduate Catalog",n:"Know what you're required to take before Golden Bear Advising so you get more out of the session",u:1},
+        {t:"Submit AP, IB, or dual enrollment scores for credit evaluation",n:"Credits evaluated through CalCentral affect what courses you can and should enroll in",u:1},
+        {t:"If in College of Letters and Science: understand the L&S 7-course breadth and American Cultures requirements",n:"You'll work with an assigned L&S College Adviser during Golden Bear Advising",u:2},
+        {t:"Build a primary course list and backup before Golden Bear Advising",n:"You enroll in courses during or just after the advising component",u:2}
+      ]}
+    ]
+  },
+  ucla:{
+    tip:"UCLA New Student Orientation is mandatory — failure to register by June 15, 2026 results in a hold that blocks course registration. There are 12 different orientation sessions for first-years, all with equitable course availability. Register through MyUCLA starting May 14, 2026 at 11:00 AM PT. Also complete required online modules before your session.",
+    src:'<a href="https://newstudents.ucla.edu/programs/first-year-students/" target="_blank" rel="noopener">newstudents.ucla.edu</a>',
+    dates:["Jun (TBD — register at MyUCLA)","Jul (TBD — register at MyUCLA)","Aug (TBD — register at MyUCLA)"],
+    datesNote:"12 sessions available. Registration opens May 14, 2026 at 11:00 AM PT via MyUCLA. Deadline to register: June 15, 2026.",
+    datesSrc:'<a href="https://newstudents.ucla.edu/programs/first-year-students/" target="_blank" rel="noopener">newstudents.ucla.edu</a>',
+    sections:[
+      {icon:"ti-id",title:"UCLA Logon ID & accounts",items:[
+        {t:"Activate your UCLA Logon ID using your UCLA ID Number from your admit letter",n:"Your Logon ID unlocks MyUCLA, the Bruin Financial Aid Portal, and orientation registration",u:0},
+        {t:"Accept your offer of admission and submit your Statement of Intent to Register (SIR)",u:0},
+        {t:"Set up your UCLA student email and check it regularly",n:"All orientation, financial aid, and registration communications go here",u:0},
+        {t:"Submit your BruinCard photo before July 1, 2026",n:"Your student ID for campus access, dining, and transit",u:1}
+      ]},
+      {icon:"ti-calendar",title:"New Student Orientation",items:[
+        {t:"Register for a New Student Orientation session via MyUCLA by June 15, 2026",n:"Registration opens May 14, 2026 at 11:00 AM PT — failure to register by June 15 results in a course registration hold",u:0},
+        {t:"Complete required online orientation modules before your session",n:"Modules highlight academic resources, campus life, and services; cover mandatory topics including alcohol, sexual assault policy, and mental health",u:1},
+        {t:"Get tech-ready: bring a charged device (laptop, iPad, or Chromebook) to your session",n:"Device is used for enrollment activities at orientation; you can still participate fully without one",u:2},
+        {t:"If seeking accommodations for your session, submit through the myCAE Application Center by May 14, 2026",u:1}
+      ]},
+      {icon:"ti-pencil",title:"Placement tests",items:[
+        {t:"Complete the Math Diagnostic Test (MDT) if planning to enroll in Math 1, 3A, or 31A by July 1, 2026",n:"$20 non-refundable fee; your placement result must be available before you register for calculus at orientation",u:0},
+        {t:"Complete the Chemistry Diagnostic Test before July 1 if enrolling in intro chemistry courses",n:"No charge; results are advisory and help place you in the appropriate course",u:0},
+        {t:"Complete the Informed Placement Process (IPP) if you have not satisfied the Entry Level Writing Requirement (ELWR)",n:"$176 fee; must be done 2–3 weeks before your orientation session",u:1},
+        {t:"Submit all official final transcripts and test scores to UCLA Undergraduate Admission by July 1, 2026",n:"Failure to submit may result in a hold preventing fall enrollment or a withdrawal of your offer",u:0}
+      ]},
+      {icon:"ti-receipt",title:"Financial aid & billing",items:[
+        {t:"Complete FAFSA or California Dream Act Application — UCLA school code is 001315",n:"If filed by March 2, your Bruin Financial Aid Letter will be in the Bruin Financial Aid Portal in late March",u:0},
+        {t:"Review and accept your financial aid offers in the Bruin Financial Aid Portal via MyUCLA",u:1},
+        {t:"Note that your SIR fee of $250 does not cover the orientation session fee — that is billed separately to BruinBill",u:2}
+      ]},
+      {icon:"ti-home",title:"Housing",items:[
+        {t:"Apply for UCLA housing as early as possible — UCLA guarantees housing for freshmen who apply on time",n:"Housing and meals are included in the orientation session fee for in-person overnight sessions",u:0},
+        {t:"If seeking housing accommodations for fall, submit through myCAE Application Center by June 1, 2026",u:1}
+      ]},
+      {icon:"ti-school",title:"Class research",items:[
+        {t:"Review the UCLA Catalog for your major's requirements and understand your college's general education requirements",n:"Your New Student Advisor (NSA) at orientation is a current undergraduate student — come prepared with questions",u:1},
+        {t:"Check your AP and IB credit on your Degree Progress/Audit Report in MyUCLA about one week before your orientation",n:"Credit evaluation affects what courses you enroll in at orientation",u:1},
+        {t:"Build a primary course list and a full backup before your session",n:"You enroll in your first-quarter courses with your NSA at orientation",u:2}
+      ]}
+    ]
+  },
+  ucsd:{
+    tip:"UC San Diego is organized into seven colleges — Revelle, Muir, Marshall, Warren, Roosevelt, Sixth, and Eighth — and each has its own orientation. All students must complete New Triton Advising (NTA) through the Virtual Advising Center (VAC) by July 1, 2026, then register for their College Orientation on the College Orientation Registration (COR) site by July 24, 2026. In-person sessions are in September.",
+    src:'<a href="https://advising.ucsd.edu/students/new-students.html" target="_blank" rel="noopener">advising.ucsd.edu</a>',
+    dates:["Sep 16, 2026 (commuter/local session)","Sep 17, 2026","Sep 20, 2026","Sep 21, 2026"],
+    datesNote:"In-person College Orientation sessions are in September. Register at cor.ucsd.edu by July 24, 2026. Some colleges also host virtual webinars in August.",
+    datesSrc:'<a href="https://muir.ucsd.edu/about/newstudent/importantdates.html" target="_blank" rel="noopener">ucsd.edu orientation dates</a>',
+    sections:[
+      {icon:"ti-id",title:"Accounts & activation",items:[
+        {t:"Accept your offer of admission by May 1, 2026 and activate your Single Sign-On (SSO)",n:"SSO is your login for all UCSD systems — activate immediately after accepting",u:0},
+        {t:"Activate your ucsd.edu student email and check it regularly from May through September",n:"All orientation deadlines, housing, and enrollment information is sent here",u:0}
+      ]},
+      {icon:"ti-calendar",title:"New Triton Advising (NTA) — required",items:[
+        {t:"Complete New Triton Advising (NTA) on the Virtual Advising Center (VAC) at vac.ucsd.edu by July 1, 2026",n:"NTA opens June 22 — submit your academic background questionnaire; this must be done before you can enroll in courses",u:0},
+        {t:"Register for your College Orientation on the COR site at cor.ucsd.edu by July 24, 2026",n:"COR opens June 22; late registration incurs a $25 fee and missing orientation places a hold on your account",u:0},
+        {t:"Complete Canvas orientation modules assigned by your college in early September",n:"Mandatory asynchronous component; must be completed before attending in-person orientation",u:1},
+        {t:"Attend your college's in-person orientation session in September",n:"One-day mandatory in-person program led by Orientation Leaders with your college community",u:1}
+      ]},
+      {icon:"ti-pencil",title:"Placement tests",items:[
+        {t:"Take the Math Placement Exam by June 1, 2026 if your major requires math",n:"Required if you need math for your major; failure to complete by the deadline limits your fall enrollment options",u:0},
+        {t:"Submit AP, IB scores and academic background in NTA when it opens June 22",n:"Input your scores and any transfer coursework so advisors can place you correctly",u:0},
+        {t:"Submit final official transcripts by July 1, 2026 (postmark deadline)",u:0}
+      ]},
+      {icon:"ti-receipt",title:"Financial aid & billing",items:[
+        {t:"Complete FAFSA or California Dream Act Application",n:"UC San Diego school code is 001317",u:0},
+        {t:"Check your financial aid award in your UCSD student portal and accept offers",u:1},
+        {t:"Note the orientation fee of approximately $220–$240 billed with fall tuition",n:"Covers orientation staff, meals, t-shirt, and campus programming fee",u:2}
+      ]},
+      {icon:"ti-home",title:"Housing",items:[
+        {t:"Apply for housing in your Enrollment Checklist — housing application opens in early June",n:"Apply by June 7, 2026; signed housing contract and pre-payment due June 29, 2026",u:0},
+        {t:"If interested in a Living Learning Community or Gender Inclusive Housing, apply by July 1, 2026",n:"Requires a signed housing contract to be eligible",u:1}
+      ]},
+      {icon:"ti-school",title:"Class research",items:[
+        {t:"Review your college's General Education requirements and your major's prerequisites in the UCSD Undergraduate Catalog",n:"Each of the seven colleges has different GE requirements — know yours before NTA advising",u:1},
+        {t:"Use the UCSD Schedule of Classes to identify courses, sections, and professors before enrolling",n:"New students enroll for fall in August after completing NTA",u:1},
+        {t:"Build a primary schedule and backup before your NTA advising session",n:"Advisors in the VAC can answer enrollment questions after July 22 online advising opens",u:2}
+      ]}
+    ]
+  },
+  ucd:{
+    tip:"UC Davis orientation has two separate deadlines: July 1 for first-years and July 15 for transfers. New students complete online orientation modules and attend an in-person session. All steps flow through your MyAdmissions portal. Check your UC Davis email daily from the time you accept your offer.",
+    src:'<a href="https://newstudentprograms.ucdavis.edu/dates-and-deadlines" target="_blank" rel="noopener">newstudentprograms.ucdavis.edu</a>',
+    dates:["Jul (first-years, exact dates in MyAdmissions)","Aug (in-person orientation sessions)"],
+    datesNote:"First-year orientation deadline: July 1, 2026. Transfer deadline: July 15, 2026. Check MyAdmissions for your specific session dates.",
+    datesSrc:'<a href="https://newstudentprograms.ucdavis.edu/dates-and-deadlines" target="_blank" rel="noopener">newstudentprograms.ucdavis.edu</a>',
+    sections:[
+      {icon:"ti-id",title:"Accounts & portal",items:[
+        {t:"Accept your offer of admission and activate your MyAdmissions portal",n:"UC Davis Student ID arrives via email by mid-December — activate as soon as you receive it",u:0},
+        {t:"Set up your UC Davis student email and check it regularly",n:"All orientation, advising, and enrollment communication goes here",u:0}
+      ]},
+      {icon:"ti-calendar",title:"Orientation",items:[
+        {t:"Complete all orientation requirements before the July 1 deadline (first-years) or July 15 (transfers)",n:"Missing deadlines may result in holds blocking fall enrollment",u:0},
+        {t:"Complete online orientation modules through your MyAdmissions portal",n:"Mandatory pre-arrival modules covering academics, campus resources, and community expectations",u:1},
+        {t:"Attend your assigned in-person orientation session",n:"Covers academic advising, course enrollment, and campus community programming",u:1}
+      ]},
+      {icon:"ti-receipt",title:"Financial aid",items:[
+        {t:"Complete FAFSA or California Dream Act Application — UC Davis school code is 001313",u:0},
+        {t:"Review and accept your financial aid award in MyAdmissions",u:1}
+      ]},
+      {icon:"ti-heart-rate",title:"Health & immunizations",items:[
+        {t:"Submit immunization records to UC Davis Student Health and Counseling Services",n:"Required before enrollment; holds block course registration",u:0}
+      ]},
+      {icon:"ti-home",title:"Housing",items:[
+        {t:"Apply for on-campus housing as early as possible — UC Davis guarantees housing for freshmen who apply on time",u:0}
+      ]},
+      {icon:"ti-school",title:"Class research",items:[
+        {t:"Review your major's requirements in the UC Davis General Catalog",n:"Know your first-quarter course requirements and prerequisites before advising",u:1},
+        {t:"Submit AP and IB scores for credit evaluation — affects your course plan",u:1},
+        {t:"Build a primary course list and backup before your orientation advising session",u:2}
+      ]}
+    ]
+  },
+  uci:{
+    tip:"UC Irvine uses the ZotPortal for all admitted student tasks. Your 8-digit Student ID arrives via email by early January — activate your UCInetID immediately. New Student Orientation is mandatory; failure to register results in an enrollment hold. Orientation sessions run in June and July.",
+    src:'<a href="https://www.newstudent.uci.edu/" target="_blank" rel="noopener">newstudent.uci.edu</a>',
+    dates:["Jun (register in ZotPortal)","Jul (register in ZotPortal)"],
+    datesNote:"Exact session dates are in ZotPortal after you activate your UCInetID. Regents and Chancellor's Scholarships awarded at time of admission.",
+    datesSrc:'<a href="https://www.newstudent.uci.edu/" target="_blank" rel="noopener">newstudent.uci.edu</a>',
+    sections:[
+      {icon:"ti-id",title:"UCInetID & ZotPortal",items:[
+        {t:"Activate your UCInetID using your 8-digit Student ID (arrives via email by early January)",n:"Your UCInetID unlocks ZotPortal, UCI email, Canvas, and orientation registration",u:0},
+        {t:"Set up your UCI email and check it regularly",n:"All orientation and financial aid communication goes here",u:0},
+        {t:"Log into ZotPortal and review your admitted student task list",u:0}
+      ]},
+      {icon:"ti-calendar",title:"New Student Orientation",items:[
+        {t:"Register for New Student Orientation through ZotPortal as soon as registration opens",n:"Mandatory — failure to register results in a hold blocking course enrollment",u:0},
+        {t:"Complete all required pre-orientation online modules before your session",u:1},
+        {t:"Attend your orientation session — you will enroll in your first-quarter courses with an advisor",u:1}
+      ]},
+      {icon:"ti-receipt",title:"Financial aid",items:[
+        {t:"Complete FAFSA or California Dream Act Application — UC Irvine school code is 001314",u:0},
+        {t:"Review and accept your financial aid award in ZotPortal",u:1}
+      ]},
+      {icon:"ti-heart-rate",title:"Health & immunizations",items:[
+        {t:"Submit immunization records to UCI Student Health before enrollment",n:"Required; holds block course registration",u:0}
+      ]},
+      {icon:"ti-home",title:"Housing",items:[
+        {t:"Apply for UCI housing as early as possible through your ZotPortal housing application",u:0}
+      ]},
+      {icon:"ti-school",title:"Class research",items:[
+        {t:"Review your major's requirements in the UCI General Catalog",u:1},
+        {t:"Submit AP and IB scores for credit evaluation",u:1},
+        {t:"Build a primary course list and backup before orientation advising",u:2}
+      ]}
+    ]
+  },
+  ucsb:{
+    tip:"UCSB Freshman Orientation is a required multi-day in-person program held in late September. Before arriving, students must complete online modules and pay the orientation fee. Your UCSB Applicant Portal opens in early January — activate it and complete tasks there throughout the summer.",
+    src:'<a href="https://orientation.sa.ucsb.edu/freshman" target="_blank" rel="noopener">orientation.sa.ucsb.edu</a>',
+    dates:["Late Sep (exact dates at orientation.sa.ucsb.edu)"],
+    datesNote:"In-person freshman orientation is in late September before fall quarter instruction begins. Register and complete modules in advance through your UCSB portal.",
+    datesSrc:'<a href="https://orientation.sa.ucsb.edu/freshman" target="_blank" rel="noopener">orientation.sa.ucsb.edu/freshman</a>',
+    sections:[
+      {icon:"ti-id",title:"UCSB Applicant Portal & accounts",items:[
+        {t:"Set up your UCSB Applicant Portal account (opens early January — self-register with your UC Application ID)",n:"All admitted-student tasks, financial aid, and orientation steps are managed here",u:0},
+        {t:"Accept your offer of admission and set up your UCSB student email",u:0}
+      ]},
+      {icon:"ti-calendar",title:"Freshman Orientation",items:[
+        {t:"Complete required online orientation modules before arriving",n:"Modules cover academics, campus resources, and mandatory education on alcohol and sexual violence policies",u:1},
+        {t:"Attend the in-person Freshman Orientation program in late September",n:"Multi-day mandatory program; you will meet your academic advisor and community",u:1},
+        {t:"Pay the orientation fee (billed to your student account)",u:2}
+      ]},
+      {icon:"ti-receipt",title:"Financial aid",items:[
+        {t:"Complete FAFSA or California Dream Act Application — UCSB school code is 001320",u:0},
+        {t:"Review and accept your financial aid award in your UCSB portal",u:1}
+      ]},
+      {icon:"ti-heart-rate",title:"Health & immunizations",items:[
+        {t:"Submit immunization records to UCSB Student Health before enrollment",n:"Required; holds block course registration",u:0}
+      ]},
+      {icon:"ti-home",title:"Housing",items:[
+        {t:"Apply for UCSB housing as early as possible through your housing portal",n:"UCSB guarantees housing for first-year students who apply on time",u:0}
+      ]},
+      {icon:"ti-school",title:"Class research",items:[
+        {t:"Review your major's requirements in the UCSB General Catalog",u:1},
+        {t:"Submit AP and IB scores for credit evaluation",u:1},
+        {t:"Build a course list and backup before your orientation advising appointment",u:2}
+      ]}
+    ]
+  },
+  ucsc:{
+    tip:"UC Santa Cruz uses a CruzID for all systems — it arrives via email by mid-December. Key deadlines: FAFSA priority by March 2, all transcripts due July 1 (postmark), test scores due July 15. International Student Orientation is in September. Check your MyUCSC portal regularly throughout the summer.",
+    src:'<a href="https://admissions.ucsc.edu/posts/dates-deadlines" target="_blank" rel="noopener">admissions.ucsc.edu</a>',
+    dates:["Sep (orientation before fall instruction — check MyUCSC)"],
+    datesNote:"Fall 2026 instruction begins late September. Orientation is held the week before classes. Watch your UCSC email for your specific dates.",
+    datesSrc:'<a href="https://admissions.ucsc.edu/posts/dates-deadlines" target="_blank" rel="noopener">admissions.ucsc.edu/dates-deadlines</a>',
+    sections:[
+      {icon:"ti-id",title:"CruzID & MyUCSC",items:[
+        {t:"Activate your CruzID (arrives via email by mid-December)",n:"Your CruzID unlocks MyUCSC, UCSC email, and all student systems",u:0},
+        {t:"Set up your UCSC student email and check it regularly",n:"All orientation, financial aid, and enrollment information is sent here",u:0},
+        {t:"Log into MyUCSC and review your To Do List for all required tasks",u:0}
+      ]},
+      {icon:"ti-calendar",title:"Orientation",items:[
+        {t:"Complete all required orientation modules before arriving",n:"Watch your UCSC email for access information throughout the summer",u:1},
+        {t:"Attend your New Student Orientation program in September",n:"Covers academic advising, course enrollment, campus resources, and community",u:1},
+        {t:"International students: also attend International Student Orientation (separate program in September)",u:1}
+      ]},
+      {icon:"ti-receipt",title:"Financial aid",items:[
+        {t:"Submit FAFSA or California Dream Act Application — priority deadline is March 2, 2026",n:"UCSC school code is 001321; Cal Grant GPA verification form also required by March 2 for California residents",u:0},
+        {t:"Submit all requested supporting documentation through MyAid Verify by June 2, 2026",u:1},
+        {t:"Review and accept your financial aid award in MyUCSC",u:1}
+      ]},
+      {icon:"ti-heart-rate",title:"Transcripts & test scores",items:[
+        {t:"Submit all final official transcripts by July 1, 2026 (postmark deadline)",n:"Required for all new incoming students",u:0},
+        {t:"Official test scores due to UCSC by July 15, 2026 (receipt deadline)",u:0}
+      ]},
+      {icon:"ti-home",title:"Housing",items:[
+        {t:"Apply for UCSC housing as early as possible after accepting your offer",n:"UCSC guarantees on-campus housing for first-year students who apply on time",u:0}
+      ]},
+      {icon:"ti-school",title:"Class research",items:[
+        {t:"Review your major's requirements in the UCSC Catalog",u:1},
+        {t:"Submit AP and IB scores for credit evaluation through MyUCSC",u:1},
+        {t:"Build a course list and backup before your orientation advising session",u:2}
+      ]}
+    ]
+  },
+  ucr:{
+    tip:"UC Riverside uses MyUCR for all admitted-student tasks — your account setup instructions arrive via email by mid-December. New Student Orientation is mandatory and held in summer before fall classes. Regents, Achievement, and Chancellor scholarships are awarded at the time of admission — check your portal immediately.",
+    src:'<a href="https://orientation.ucr.edu/" target="_blank" rel="noopener">orientation.ucr.edu</a>',
+    dates:["Jun (register at orientation.ucr.edu)","Jul (register at orientation.ucr.edu)"],
+    datesNote:"Summer orientation sessions; registration available in MyUCR. Check orientation.ucr.edu for exact dates.",
+    datesSrc:'<a href="https://orientation.ucr.edu/" target="_blank" rel="noopener">orientation.ucr.edu</a>',
+    sections:[
+      {icon:"ti-id",title:"MyUCR & accounts",items:[
+        {t:"Set up your MyUCR account using the instructions sent to your email by mid-December",n:"MyUCR is your portal for all orientation tasks, financial aid, and enrollment",u:0},
+        {t:"Set up your UCR student email and check it regularly",u:0}
+      ]},
+      {icon:"ti-calendar",title:"New Student Orientation",items:[
+        {t:"Register for a New Student Orientation session through MyUCR when registration opens",n:"Mandatory — a hold will prevent course registration if not completed",u:0},
+        {t:"Complete all required pre-orientation online modules before your session",u:1},
+        {t:"Attend your orientation session — academic advising and course enrollment happen here",u:1}
+      ]},
+      {icon:"ti-receipt",title:"Financial aid",items:[
+        {t:"Complete FAFSA or California Dream Act Application — UC Riverside school code is 001316",u:0},
+        {t:"Check MyUCR for any scholarship awards made at the time of admission",n:"Regents, Achievement, and Chancellor scholarships are awarded at admission — review immediately",u:0},
+        {t:"Review and accept your financial aid award in MyUCR",u:1}
+      ]},
+      {icon:"ti-heart-rate",title:"Health & immunizations",items:[
+        {t:"Submit immunization records to UCR Student Health before enrollment",n:"Required; holds block course registration",u:0}
+      ]},
+      {icon:"ti-home",title:"Housing",items:[
+        {t:"Apply for UCR housing as early as possible after accepting your offer",u:0}
+      ]},
+      {icon:"ti-school",title:"Class research",items:[
+        {t:"Review your major's requirements in the UCR General Catalog",u:1},
+        {t:"Submit AP and IB scores for credit evaluation",u:1},
+        {t:"Build a primary course list and backup before orientation advising",u:2}
+      ]}
+    ]
+  },
+  ucm:{
+    tip:"UC Merced uses UC Merced Connect as your student portal — self-register using the same email address as your UC application. Merced releases admissions decisions on a rolling basis starting in December. New Student Orientation is mandatory and held before fall instruction begins. Check your UC Merced email constantly through the summer.",
+    src:'<a href="https://students.ucmerced.edu/content/new-student-orientation" target="_blank" rel="noopener">students.ucmerced.edu</a>',
+    dates:["Aug (exact dates at UC Merced Connect)","Sep (pre-instruction orientation)"],
+    datesNote:"Orientation is held in August or September before fall classes begin. Log into UC Merced Connect for your specific session and tasks.",
+    datesSrc:'<a href="https://students.ucmerced.edu/content/new-student-orientation" target="_blank" rel="noopener">students.ucmerced.edu</a>',
+    sections:[
+      {icon:"ti-id",title:"UC Merced Connect & accounts",items:[
+        {t:"Self-register in UC Merced Connect using the same email you used on your UC Application",n:"UC Merced Connect is your hub for all admitted-student tasks, orientation, and financial aid",u:0},
+        {t:"Set up your UC Merced student email and check it frequently",n:"All orientation, financial aid, and enrollment communications go here",u:0}
+      ]},
+      {icon:"ti-calendar",title:"New Student Orientation",items:[
+        {t:"Register for New Student Orientation through UC Merced Connect when sessions open",n:"Mandatory — failure to attend results in holds blocking fall enrollment",u:0},
+        {t:"Complete required pre-orientation online modules before your session",u:1},
+        {t:"Attend your orientation session — academic advising and course enrollment happen here",u:1}
+      ]},
+      {icon:"ti-receipt",title:"Financial aid",items:[
+        {t:"Complete FAFSA or California Dream Act Application — UC Merced school code is 041271",n:"UC Merced has some of the strongest financial aid packages in the UC system — check your award carefully",u:0},
+        {t:"Review and accept your financial aid award in UC Merced Connect",u:1}
+      ]},
+      {icon:"ti-heart-rate",title:"Health & immunizations",items:[
+        {t:"Submit immunization records to UC Merced Student Health before enrollment",n:"Required; holds block course registration",u:0}
+      ]},
+      {icon:"ti-home",title:"Housing",items:[
+        {t:"Apply for UC Merced housing early after accepting your offer",n:"UC Merced is a residential campus and encourages all freshmen to live on campus",u:0}
+      ]},
+      {icon:"ti-school",title:"Class research",items:[
+        {t:"Review your major's requirements in the UC Merced Catalog",u:1},
+        {t:"Submit AP and IB scores for credit evaluation",u:1},
+        {t:"Build a primary course list and backup before orientation advising",u:2}
+      ]}
+    ]
+  }
+};
+
+var checked={},curSchool='berkeley',curView='timeline',curDateIdx=null,openSec=null;
+function allItems(s){var a=[];DB[s].sections.forEach(function(sec,si){sec.items.forEach(function(item,ii){a.push({item:item,si:si,ii:ii});});});return a;}
+function totalItems(s){return allItems(s).length;}
+function doneCount(s){var d=0;allItems(s).forEach(function(x){if(checked[s+'-'+x.si+'-'+x.ii])d++;});return d;}
+function secDoneCount(s,si){var d=0;DB[s].sections[si].items.forEach(function(_,ii){if(checked[s+'-'+si+'-'+ii])d++;});return d;}
+function updateMeter(){var t=totalItems(curSchool),d=doneCount(curSchool),p=t?Math.round((d/t)*100):0;document.getElementById('pfill').style.width=p+'%';document.getElementById('ppct').textContent=p+'%';document.getElementById('pcount').textContent=d+' of '+t+' done';}
+function updateTip(){var D=DB[curSchool];document.getElementById('tlbl').textContent=D.tip.split('.')[0].substring(0,55)+'...';document.getElementById('ttxt').textContent=D.tip;document.getElementById('tsrc').innerHTML='Source: '+D.src;}
+function updateDates(){var D=DB[curSchool];document.getElementById('dnote').textContent=D.datesNote;document.getElementById('dsrc').innerHTML=D.datesSrc;var c=document.getElementById('dpills');c.innerHTML='';D.dates.forEach(function(dt,i){var b=document.createElement('button');b.className='date-pill'+(curDateIdx===i?' sel':'');b.textContent=dt;b.addEventListener('click',function(){curDateIdx=(curDateIdx===i)?null:i;updateDates();renderContent();});c.appendChild(b);});}
+function getOriDate(){return curDateIdx===null?null:parseDate(DB[curSchool].dates[curDateIdx]);}
+function renderTimeline(){
+  var content=document.getElementById('content');
+  var oriDate=getOriDate();
+  var uc=[PHASES[0].color,PHASES[1].color,PHASES[2].color,PHASES[3].color];
+  var labels=['Critical — do immediately','High priority','2–3 weeks out','Final week'];
+  var html='<div class="uk">';
+  labels.forEach(function(l,i){html+='<span class="uk-i"><span class="uk-dot" style="background:'+uc[i]+'"></span>'+l+'</span>';});
+  html+='</div>';
+  if(!oriDate) html+='<div class="no-date-msg">👆 Select an orientation date above to see exact calendar windows for each phase.</div>';
+  var frag='';
+  [0,1,2,3].forEach(function(phase){
+    var items=[];
+    DB[curSchool].sections.forEach(function(sec,si){sec.items.forEach(function(item,ii){if(item.u===phase)items.push({item:item,si:si,ii:ii});});});
+    if(!items.length) return;
+    frag+='<div class="phase"><div class="ph-head"><div class="ph-dot"></div><span class="ph-title">'+PHASES[phase].label+'</span><span class="ph-win">'+calcWindow(phase,oriDate)+'</span></div><div class="ph-line">';
+    items.forEach(function(x){
+      var key=curSchool+'-'+x.si+'-'+x.ii,ck=checked[key];
+      frag+='<div class="t-item'+(ck?' done':'')+'" data-key="'+key+'" role="checkbox" aria-checked="'+(ck?'true':'false')+'" tabindex="0">';
+      frag+='<div class="urg-bar" style="background:'+uc[phase]+'"></div>';
+      frag+='<div class="chkbox'+(ck?' on':'')+'"></div>';
+      frag+='<div style="flex:1"><div class="i-text">'+x.item.t+'</div>'+(x.item.n?'<div class="i-note">'+x.item.n+'</div>':'')+'</div></div>';
+    });
+    frag+='</div></div>';
+  });
+  content.innerHTML=html+frag;
+  content.querySelectorAll('.t-item').forEach(function(row){
+    function toggle(){var k=row.dataset.key;checked[k]=!checked[k];renderTimeline();updateMeter();}
+    row.addEventListener('click',toggle);
+    row.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();toggle();}});
+  });
+}
+function renderChecklist(){
+  var content=document.getElementById('content');content.innerHTML='';
+  DB[curSchool].sections.forEach(function(sec,si){
+    var card=document.createElement('div');card.className='sec-card';
+    var nd=secDoneCount(curSchool,si),tot=sec.items.length;
+    var head=document.createElement('div');head.className='sec-head';head.setAttribute('role','button');head.setAttribute('tabindex','0');
+    var bc='sec-badge'+(nd===tot&&tot>0?' complete':'');
+    head.innerHTML='<i class="ti '+sec.icon+' sec-icon" aria-hidden="true"></i><span class="sec-title">'+sec.title+'</span><span class="'+bc+'">'+nd+'/'+tot+'</span><i class="ti ti-chevron-down sec-chev'+(openSec===curSchool+'-'+si?' open':'')+'" aria-hidden="true"></i>';
+    var body=document.createElement('div');body.className='sec-body'+(openSec===curSchool+'-'+si?' open':'');
+    sec.items.forEach(function(item,ii){
+      var key=curSchool+'-'+si+'-'+ii,ck=checked[key];
+      var row=document.createElement('div');row.className='c-item'+(ck?' done':'');row.dataset.key=key;row.setAttribute('role','checkbox');row.setAttribute('aria-checked',ck?'true':'false');row.setAttribute('tabindex','0');
+      row.innerHTML='<div class="chkbox'+(ck?' on':'')+'"></div><div><div class="i-text">'+item.t+'</div>'+(item.n?'<div class="i-note">'+item.n+'</div>':'')+'</div>';
+      function toggle(){checked[key]=!checked[key];renderChecklist();updateMeter();}
+      row.addEventListener('click',toggle);
+      row.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();toggle();}});
+      body.appendChild(row);
+    });
+    function toggleSec(){var k=curSchool+'-'+si;openSec=openSec===k?null:k;renderChecklist();}
+    head.addEventListener('click',toggleSec);
+    head.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();toggleSec();}});
+    card.appendChild(head);card.appendChild(body);content.appendChild(card);
+  });
+}
+function renderContent(){curView==='timeline'?renderTimeline():renderChecklist();}
+document.getElementById('sch').addEventListener('change',function(){curSchool=this.value;curDateIdx=null;openSec=null;updateTip();updateDates();renderContent();updateMeter();});
+document.querySelectorAll('.vtab').forEach(function(b){b.addEventListener('click',function(){curView=this.dataset.view;document.querySelectorAll('.vtab').forEach(function(x){x.classList.remove('active');});this.classList.add('active');renderContent();});});
+updateTip();updateDates();renderContent();updateMeter();
+</script>
+</body>
+</html>
